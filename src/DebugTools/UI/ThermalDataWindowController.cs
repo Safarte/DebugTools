@@ -4,10 +4,7 @@ using KSP.Game;
 using KSP.Messages;
 using KSP.Modules;
 using KSP.Sim.impl;
-using TMPro;
 using UitkForKsp2.API;
-using Unity.Collections;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace DebugTools.UI;
