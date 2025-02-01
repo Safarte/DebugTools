@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/ThermalDataWindow.uss?fileID=7433441132597879392&amp;guid=e6e22d8a0479cb14b9945a2a7a893f46&amp;type=3#ThermalDataWindow" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Thermal Data" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="rows-view">
+            <DebugTools.Unity.Runtime.ThermalDataRow IsHeader="true" />
+            <DebugTools.Unity.Runtime.ThermalDataRow IsHeader="false" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
