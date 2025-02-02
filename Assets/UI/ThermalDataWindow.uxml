@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/ThermalDataWindow.uss?fileID=7433441132597879392&amp;guid=e6e22d8a0479cb14b9945a2a7a893f46&amp;type=3#ThermalDataWindow" />
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/ThermalDataWindow.uss?fileID=7433441132597879392&amp;guid=d65e593cd82c5b747aec41e97c5a3cbe&amp;type=3#ThermalDataWindow" />
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="title-bar">
             <ui:Label text="Thermal Data" />

@@ -1,110 +1,115 @@
-using System.Reflection;
-using BepInEx;
 using JetBrains.Annotations;
-using SpaceWarp;
-using SpaceWarp.API.Assets;
-using SpaceWarp.API.Mods;
-using SpaceWarp.API.UI.Appbar;
 using DebugTools.UI;
 using DebugTools.Utils;
 using KSP.Game;
 using UitkForKsp2.API;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UIElements;
+using ILogger = ReduxLib.Logging.ILogger;
 
-namespace DebugTools;
-
-[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-[BepInDependency(SpaceWarpPlugin.ModGuid, SpaceWarpPlugin.ModVer)]
-public class DebugToolsPlugin : BaseSpaceWarpPlugin
+namespace DebugTools
 {
-    // Useful in case some other mod wants to use this mod a dependency
-    [PublicAPI] public const string ModGuid = MyPluginInfo.PLUGIN_GUID;
-    [PublicAPI] public const string ModName = MyPluginInfo.PLUGIN_NAME;
-    [PublicAPI] public const string ModVer = MyPluginInfo.PLUGIN_VERSION;
-
-    /// Singleton instance of the plugin class
-    [PublicAPI]
-    public static DebugToolsPlugin Instance { get; set; }
-
-    public DebugWindowController DebugWindowController { get; set; }
-
-    /// <summary>
-    /// Runs when the mod is first initialized.
-    /// </summary>
-    public override void OnInitialized()
+    public class DebugToolsPlugin : KerbalMonoBehaviour
     {
-        base.OnInitialized();
+        /// Singleton instance of the plugin class
+        [PublicAPI]
+        public static DebugToolsPlugin Instance { get; set; }
 
-        Instance = this;
+        public static DebugWindowController DebugWindowController { get; set; }
 
-        // Load all the other assemblies used by this mod
-        LoadAssemblies();
+        internal static ILogger Logger;
 
-        Settings.Initialize();
-
-        // Create main debug window
-        var debugWindow = CreateWindow("DebugWindow");
-        // Add a controller for the UI to the window's game object
-        DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
-        DebugWindowController.IsWindowOpen = false;
-
-        CreateDebugWindows();
-    }
-
-    private static UIDocument CreateWindow(string name, Transform parent = null)
-    {
-        // Load the UI from the asset bundle
-        var uxml = AssetManager.GetAsset<VisualTreeAsset>(
-            $"{ModGuid}/DebugTools_ui/ui/{name}.uxml"
-        );
-
-        // Create the window options object
-        var windowOptions = new WindowOptions
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+        public static void AttachToReduxLib()
         {
-            WindowId = $"DebugTools_{name}",
-            Parent = parent,
-            IsHidingEnabled = true,
-            DisableGameInputForTextFields = true,
-            MoveOptions = new MoveOptions
+            ReduxLib.ReduxLib.OnReduxLibInitialized += PreInitialize;
+        }
+
+        private static void PreInitialize()
+        {
+            Logger = ReduxLib.ReduxLib.GetLogger("Debug Tools");
+            Logger.LogInfo("Pre-initialized");
+        }
+
+        /// <summary>
+        /// Runs when the mod is first initialized.
+        /// </summary>
+        public static void Initialize()
+        {
+            Configuration.Initialize(ReduxLib.ReduxLib.ReduxCoreConfig);
+
+            var debugHandle = LoadUxml("DebugWindow");
+            debugHandle.Completed += handle =>
             {
-                IsMovingEnabled = true,
-                CheckScreenBounds = true
-            }
-        };
+                if (handle.Status != AsyncOperationStatus.Succeeded)
+                {
+                    Logger.LogError("Failed to load DebugWindow.uxml");
+                    return;
+                }
 
-        // Create the window
-        return Window.Create(windowOptions, uxml);
-    }
+                // Create main debug window
+                var debugWindow = CreateWindowFromUxml(handle.Result, "DebugWindow");
+                // Add a controller for the UI to the window's game object
+                DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
+            };
 
-    /// <summary>
-    /// Loads all the assemblies for the mod.
-    /// </summary>
-    private static void LoadAssemblies()
-    {
-        // Load the Unity project assembly
-        var currentFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory!.FullName;
-        var unityAssembly = Assembly.LoadFrom(Path.Combine(currentFolder, "DebugTools.Unity.dll"));
-        // Register any custom UI controls from the loaded assembly
-        CustomControls.RegisterFromAssembly(unityAssembly);
-    }
+            CreateDebugWindows();
+        }
 
-    private void CreateDebugWindows()
-    {
-        // Thermal data window
-        var thermalDataWindow = CreateWindow("ThermalDataWindow");
-        var thermalDataWindowController = thermalDataWindow.gameObject.AddComponent<ThermalDataWindowController>();
-        thermalDataWindowController.IsWindowOpen = false;
-        DebugWindowController.ThermalToggle.RegisterCallback((ChangeEvent<bool> evt) =>
-            thermalDataWindowController.IsWindowOpen = evt.newValue);
-    }
-
-    public void Update()
-    {
-        if (Settings.ToggleKey?.Value != null && Settings.ToggleKey.Value.IsDown())
+        private static AsyncOperationHandle<VisualTreeAsset> LoadUxml(string name)
         {
-            DebugWindowController.IsWindowOpen = !DebugWindowController.IsWindowOpen;
+            return Addressables.LoadAssetAsync<VisualTreeAsset>($"Assets/Modules/DebugTools/Assets/UI/{name}.uxml");
+        }
+
+        private static UIDocument CreateWindowFromUxml(VisualTreeAsset uxml, string name)
+        {
+            // Create the window options object
+            var windowOptions = new WindowOptions
+            {
+                WindowId = $"DebugTools_{name}",
+                Parent = null,
+                IsHidingEnabled = true,
+                DisableGameInputForTextFields = true,
+                MoveOptions = new MoveOptions
+                {
+                    IsMovingEnabled = true,
+                    CheckScreenBounds = true
+                }
+            };
+
+            // Create the window
+            Instantiate(uxml);
+            return Window.Create(windowOptions, uxml);
+        }
+
+        private static void CreateDebugWindows()
+        {
+            // Thermal data window
+            var thermalHandle = LoadUxml("ThermalDataWindow");
+            thermalHandle.Completed += handle =>
+            {
+                if (handle.Status != AsyncOperationStatus.Succeeded)
+                {
+                    Logger.LogError("Failed to load ThermalDataWindow.uxml");
+                    return;
+                }
+
+                var thermalDataWindow = CreateWindowFromUxml(handle.Result, "ThermalDataWindow");
+                var thermalDataWindowController =
+                    thermalDataWindow.gameObject.AddComponent<ThermalDataWindowController>();
+                DebugWindowController.ThermalToggle.RegisterCallback((ChangeEvent<bool> evt) =>
+                    thermalDataWindowController.IsWindowOpen = evt.newValue);
+            };
+        }
+
+        public void Update()
+        {
+            if (Input.GetKey(Configuration.ToggleModifierKey.Value) && Input.GetKeyDown(Configuration.ToggleKey.Value))
+            {
+                DebugWindowController.IsWindowOpen = !DebugWindowController.IsWindowOpen;
+            }
         }
     }
 }

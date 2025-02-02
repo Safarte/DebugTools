@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/DebugWindow/DebugWindow.uss?fileID=7433441132597879392&amp;guid=f49119c0dc6aec7469a0374f7f606ceb&amp;type=3#DebugWindow" />
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/DebugWindow.uss?fileID=7433441132597879392&amp;guid=3b02df7e5905e8746a5ed673f30eb0be&amp;type=3#DebugWindow" />
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="title-bar">
             <ui:Label text="Debug Tools" />
