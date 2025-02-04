@@ -53,6 +53,7 @@ namespace DebugTools
                 var debugWindow = CreateWindowFromUxml(handle.Result, "DebugWindow");
                 // Add a controller for the UI to the window's game object
                 DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
+                DebugWindowController.IsWindowOpen = false;
             };
 
             CreateDebugWindows();
@@ -99,17 +100,10 @@ namespace DebugTools
                 var thermalDataWindow = CreateWindowFromUxml(handle.Result, "ThermalDataWindow");
                 var thermalDataWindowController =
                     thermalDataWindow.gameObject.AddComponent<ThermalDataWindowController>();
+                thermalDataWindowController.IsWindowOpen = false;
                 DebugWindowController.ThermalToggle.RegisterCallback((ChangeEvent<bool> evt) =>
                     thermalDataWindowController.IsWindowOpen = evt.newValue);
             };
-        }
-
-        public void Update()
-        {
-            if (Input.GetKey(Configuration.ToggleModifierKey.Value) && Input.GetKeyDown(Configuration.ToggleKey.Value))
-            {
-                DebugWindowController.IsWindowOpen = !DebugWindowController.IsWindowOpen;
-            }
         }
     }
 }

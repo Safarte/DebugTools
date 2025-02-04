@@ -1,5 +1,7 @@
+using DebugTools.Utils;
 using KSP.Game;
 using UitkForKsp2.API;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace DebugTools.UI
@@ -14,7 +16,7 @@ namespace DebugTools.UI
 
         // The elements of the window that we need to access
         private VisualElement _rootElement;
-    
+
         // Debug tool windows toggles
         public Toggle ThermalToggle;
 
@@ -58,6 +60,14 @@ namespace DebugTools.UI
             var closeButton = _rootElement.Q<Button>("close-button");
             // Add a click event handler to the close button
             closeButton.clicked += () => IsWindowOpen = false;
+        }
+
+        public void Update()
+        {
+            if (Input.GetKey(Configuration.ToggleModifierKey.Value) && Input.GetKeyDown(Configuration.ToggleKey.Value))
+            {
+                IsWindowOpen = !IsWindowOpen;
+            }
         }
     }
 }
