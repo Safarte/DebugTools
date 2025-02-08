@@ -77,7 +77,6 @@ namespace DebugTools.Runtime.Controllers.FlightTools
             _toggleActiveVesselOnly.RegisterValueChangedCallback(OnActivateVesselOnlyChanged);
 
             _itemTypeDropdown = RootElement.Q<DropdownField>("item-type");
-            DebugToolsPlugin.Logger.LogInfo(string.Join(" ", Enum.GetNames(typeof(ItemType))));
             _itemTypeDropdown.choices = Enum.GetNames(typeof(ItemType)).ToList();
             _itemTypeDropdown.value = ItemType.Vessel.ToString();
             _itemTypeDropdown.RegisterValueChangedCallback(OnItemTypeChanged);
@@ -89,7 +88,7 @@ namespace DebugTools.Runtime.Controllers.FlightTools
 
         private void LateUpdate()
         {
-            if (IsGameShuttingDown) return;
+            if (IsGameShuttingDown || !IsWindowOpen) return;
 
             var universeModel = Game?.UniverseModel;
             if (universeModel == null) return;

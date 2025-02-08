@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/TerrainDebugWindow.uss?fileID=7433441132597879392&amp;guid=e2cb55e06000f684180b794e3d61eddf&amp;type=3#TerrainDebugWindow" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Terrain Debug" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="controls" class="controls">
+            <ui:Toggle label="Enable Mesh Bucketing" name="enable-mesh-bucketing" class="toggle terrain-toggle" />
+            <ui:Toggle label="Show Biome Colors" name="show-biome-colors" class="toggle terrain-toggle" />
+            <ui:Toggle label="Boost Triplanar Contrast" name="boost-triplanar-contrast" class="toggle terrain-toggle" />
+            <ui:Toggle label="Render Wireframe" name="render-wireframe" class="toggle terrain-toggle" />
+            <ui:Toggle label="Include Interest Position" name="include-interest-position" class="toggle terrain-toggle" />
+            <ui:Toggle label="Render PhysX Bubble" name="render-physx-bubble" class="toggle terrain-toggle" />
+            <ui:DropdownField label="Show Biomes" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="show-biomes" class="terrain-dropdown" />
+            <ui:DropdownField label="Show Triplanar" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="show-triplanar" class="terrain-dropdown" />
+            <ui:Button text="Update Triplanar Basis" display-tooltip-when-elided="true" name="update-triplanar-basis" class="tp-button" />
+            <ui:Button text="Reset Triplanar Basis" display-tooltip-when-elided="true" name="reset-triplanar-basis" class="tp-button" />
+            <ui:Label tabindex="-1" text="10s since triplanar basis updated." display-tooltip-when-elided="true" name="time-since-tp-update" class="terrain-text" />
+            <ui:Label tabindex="-1" text="PQS Stats: Vessels: 99 | Quads: 51132 | Colliders: 12312" display-tooltip-when-elided="true" name="pqs-stats" class="terrain-text" />
+            <ui:Button text="Select Quad" display-tooltip-when-elided="true" name="select-quad" class="button debug-quad-button" />
+            <ui:Label tabindex="-1" text="Click on a piece of terrain." display-tooltip-when-elided="true" name="debug-quad-status" class="debug-quad-status" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

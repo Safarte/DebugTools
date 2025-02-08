@@ -127,6 +127,9 @@ namespace DebugTools
             
             // Quick actions window
             CreateDebugWindow<QuickSwitchWindowController>("QuickSwitchWindow", "Quick Switch");
+            
+            // Terrain debug window
+            CreateDebugWindow<TerrainDebugWindowController>("TerrainDebugWindow", "Terrain Debug");
         }
     }
 }
