@@ -1,0 +1,47 @@
+.root {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#title-bar {
+    justify-content: space-between;
+    margin-bottom: 4px;
+    margin-top: 0;
+}
+
+#close-button {
+    margin-left: 0;
+    margin-right: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+#close-button:hover {
+    color: rgb(194, 41, 25);
+    border-left-color: rgb(194, 41, 25);
+    border-right-color: rgb(194, 41, 25);
+    border-top-color: rgb(194, 41, 25);
+    border-bottom-color: rgb(194, 41, 25);
+}
+
+.button {
+    width: 30%;
+    margin-top: 8px;
+    height: 60px;
+}
+
+.actions {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 4px;
+}

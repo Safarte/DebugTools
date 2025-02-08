@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/QuickActionsWindow.uss?fileID=7433441132597879392&amp;guid=e7fbbc4e594afab49af2d0d6baea1b30&amp;type=3#QuickActionsWindow" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Quick Switch" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="actions" class="actions">
+            <ui:Button text="Ship in&#10;VAB" display-tooltip-when-elided="true" name="ship-in-vab" class="button" />
+            <ui:Button text="Ship on&#10;Launchpad" display-tooltip-when-elided="true" name="ship-on-launchpad" class="button" />
+            <ui:Button text="Ship in&#10;Orbit" display-tooltip-when-elided="true" name="ship-in-orbit" class="button" />
+            <ui:Button text="Plane in&#10;VAB" display-tooltip-when-elided="true" name="plane-in-vab" class="button" />
+            <ui:Button text="Plane on&#10;Runway" display-tooltip-when-elided="true" name="plane-on-runway" class="button" />
+            <ui:Button text="VAB&#10;Surface" display-tooltip-when-elided="true" name="vab-surface" class="button" />
+            <ui:Button text="VAB&#10;Orbit" display-tooltip-when-elided="true" name="vab-orbit" class="button" />
+            <ui:Button text="BAE&#10;Surface" display-tooltip-when-elided="true" name="bae-surface" class="button" />
+            <ui:Button text="BAE&#10;Orbit" display-tooltip-when-elided="true" name="bae-orbit" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

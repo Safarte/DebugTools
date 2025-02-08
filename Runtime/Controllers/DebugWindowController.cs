@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using DebugTools.Utils;
 using KSP.Game;
+using KSP.Messages;
 using UitkForKsp2.API;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// ReSharper disable once CheckNamespace
 namespace DebugTools.Runtime.Controllers
 {
     /// <summary>
@@ -37,6 +39,11 @@ namespace DebugTools.Runtime.Controllers
                 // Set the display style of the root element to show or hide the window
                 _rootElement.style.display = value ? DisplayStyle.Flex : DisplayStyle.None;
             }
+        }
+
+        private void Awake()
+        {
+            Game.Messages.Subscribe<GameStateEnteredMessage>(OnGameStateEntered);
         }
 
         /// <summary>
@@ -82,6 +89,14 @@ namespace DebugTools.Runtime.Controllers
             WindowToggles[windowName].AddToClassList("toggle");
             _content.Add(WindowToggles[windowName]);
             WindowToggles[windowName].RegisterCallback(callback);
+        }
+
+        private void OnGameStateEntered(MessageCenterMessage msg)
+        {
+            if (msg is not GameStateEnteredMessage message) return;
+            
+            foreach (var toggle in WindowToggles.Values)
+                toggle?.SetEnabled((int)message.StateBeingEntered > 2);
         }
     }
 }

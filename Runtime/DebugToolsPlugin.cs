@@ -124,6 +124,9 @@ namespace DebugTools
             
             // Flight tools window
             CreateDebugWindow<FlightToolsWindowController>("FlightToolsWindow", "Flight Tools");
+            
+            // Quick actions window
+            CreateDebugWindow<QuickSwitchWindowController>("QuickSwitchWindow", "Quick Switch");
         }
     }
 }
