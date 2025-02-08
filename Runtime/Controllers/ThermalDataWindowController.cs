@@ -1,43 +1,23 @@
 ﻿using System.Collections.Generic;
-using DebugTools.Unity.Runtime;
+using DebugTools.Runtime.UI;
 using KSP;
-using KSP.Game;
 using KSP.Messages;
 using KSP.Modules;
 using KSP.Sim.impl;
-using UitkForKsp2.API;
 using UnityEngine.UIElements;
 
-namespace DebugTools.UI
+// ReSharper disable once CheckNamespace
+namespace DebugTools.Runtime.Controllers
 {
-    public class ThermalDataWindowController : KerbalMonoBehaviour
+    public class ThermalDataWindowController : BaseWindowController
     {
-        // The UIDocument component of the window game object
-        private UIDocument _window;
-
         // The elements of the window that we need to access
-        private VisualElement _rootElement;
         private ScrollView _rowsView;
         private readonly List<ThermalDataRow> _dataRows = new();
 
         // Current active vessel tracking
         private VesselComponent _activeVessel;
         private bool _vesselChanged = true;
-
-        // The backing field for the IsWindowOpen property
-        private bool _isWindowOpen;
-
-        public bool IsWindowOpen
-        {
-            get => _isWindowOpen;
-            set
-            {
-                _isWindowOpen = value;
-                // Set the display style of the root element to show or hide the window
-                if (_rootElement != null)
-                    _rootElement.style.display = value ? DisplayStyle.Flex : DisplayStyle.None;
-            }
-        }
 
         private void Awake()
         {
@@ -57,7 +37,7 @@ namespace DebugTools.UI
 
         private void LateUpdate()
         {
-            if (_isWindowOpen)
+            if (IsWindowOpen)
             {
                 if (_vesselChanged && Game != null && Game?.ViewController != null)
                 {
@@ -184,31 +164,11 @@ namespace DebugTools.UI
         /// </summary>
         private void OnEnable()
         {
-            // Get the UIDocument component from the game object
-            _window = GetComponent<UIDocument>();
+            Enable();
 
-            // Get the root element of the window.
-            // Since we're cloning the UXML tree from a VisualTreeAsset, the actual root element is a TemplateContainer,
-            // so we need to get the first child of the TemplateContainer to get our actual root VisualElement.
-            _rootElement = _window.rootVisualElement[0];
-
-            // Center the window by default
-            _rootElement.CenterByDefault();
-
-            // Get the close button from the window
-            var closeButton = _rootElement.Q<Button>("close-button");
-            // Add a click event handler to the close button
-            closeButton.clicked += CloseWindow;
-
-            _rowsView = _rootElement.Q<ScrollView>("rows-view");
+            _rowsView = RootElement.Q<ScrollView>("rows-view");
 
             PopulateWindow();
-        }
-
-        private void CloseWindow()
-        {
-            IsWindowOpen = false;
-            DebugToolsPlugin.DebugWindowController.ThermalToggle.value = false;
         }
     
         private void VesselChanged(MessageCenterMessage msg)

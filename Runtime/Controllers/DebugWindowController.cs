@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using DebugTools.Utils;
 using KSP.Game;
 using UitkForKsp2.API;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace DebugTools.UI
+namespace DebugTools.Runtime.Controllers
 {
     /// <summary>
     /// Controller for the DebugWindow UI.
@@ -16,9 +17,10 @@ namespace DebugTools.UI
 
         // The elements of the window that we need to access
         private VisualElement _rootElement;
+        private VisualElement _content;
 
         // Debug tool windows toggles
-        public Toggle ThermalToggle;
+        public Dictionary<string, Toggle> WindowToggles = new();
 
         // The backing field for the IsWindowOpen property
         private bool _isWindowOpen;
@@ -50,9 +52,6 @@ namespace DebugTools.UI
             // so we need to get the first child of the TemplateContainer to get our actual root VisualElement.
             _rootElement = _window.rootVisualElement[0];
 
-            // Get the toggle from the window
-            ThermalToggle = _rootElement.Q<Toggle>("thermal-toggle");
-
             // Center the window by default
             _rootElement.CenterByDefault();
 
@@ -60,6 +59,10 @@ namespace DebugTools.UI
             var closeButton = _rootElement.Q<Button>("close-button");
             // Add a click event handler to the close button
             closeButton.clicked += () => IsWindowOpen = false;
+            
+            // Toggles container
+            _content = _rootElement.Q<VisualElement>("content");
+            _content.Clear();
         }
 
         public void Update()
@@ -68,6 +71,17 @@ namespace DebugTools.UI
             {
                 IsWindowOpen = !IsWindowOpen;
             }
+        }
+
+        public void RegisterToggle(string windowName, string toggleLabel, EventCallback<ChangeEvent<bool>> callback)
+        {
+            WindowToggles[windowName] = new Toggle
+            {
+                label = toggleLabel
+            };
+            WindowToggles[windowName].AddToClassList("toggle");
+            _content.Add(WindowToggles[windowName]);
+            WindowToggles[windowName].RegisterCallback(callback);
         }
     }
 }

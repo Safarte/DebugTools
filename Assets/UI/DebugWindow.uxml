@@ -6,7 +6,7 @@
             <ui:Button text="×" name="close-button" />
         </ui:VisualElement>
         <ui:VisualElement name="content">
-            <ui:Toggle label="Thermal Data" name="thermal-toggle" class="toggle" />
+            <ui:Toggle label="Thermal Data" class="toggle" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

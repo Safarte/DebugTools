@@ -6,8 +6,8 @@
             <ui:Button text="×" name="close-button" />
         </ui:VisualElement>
         <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="rows-view">
-            <DebugTools.Unity.Runtime.ThermalDataRow IsHeader="true" />
-            <DebugTools.Unity.Runtime.ThermalDataRow IsHeader="false" />
+            <DebugTools.Runtime.UI.ThermalDataRow />
+            <DebugTools.Runtime.UI.ThermalDataRow IsHeader="false" />
         </ui:ScrollView>
     </ui:VisualElement>
 </ui:UXML>

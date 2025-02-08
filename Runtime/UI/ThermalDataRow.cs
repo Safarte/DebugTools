@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 // ReSharper disable once CheckNamespace
-namespace DebugTools.Unity.Runtime
+namespace DebugTools.Runtime.UI
 {
     public class ThermalDataRow : VisualElement
     {

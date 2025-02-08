@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
-using DebugTools.UI;
+using DebugTools.Runtime.Controllers;
+using DebugTools.Runtime.Controllers.FlightTools;
 using DebugTools.Utils;
 using KSP.Game;
 using UitkForKsp2.API;
@@ -9,6 +10,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UIElements;
 using ILogger = ReduxLib.Logging.ILogger;
 
+// ReSharper disable once CheckNamespace
 namespace DebugTools
 {
     public class DebugToolsPlugin : KerbalMonoBehaviour
@@ -85,25 +87,43 @@ namespace DebugTools
             return Window.Create(windowOptions, uxml);
         }
 
-        private static void CreateDebugWindows()
+        private static void CreateDebugWindow<T>(string windowName, string toggleLabel) where T : BaseWindowController
         {
-            // Thermal data window
-            var thermalHandle = LoadUxml("ThermalDataWindow");
-            thermalHandle.Completed += handle =>
+            // Load window UXML
+            var handle = LoadUxml(windowName);
+            handle.Completed += handle1 =>
             {
-                if (handle.Status != AsyncOperationStatus.Succeeded)
+                if (handle1.Status != AsyncOperationStatus.Succeeded)
                 {
-                    Logger.LogError("Failed to load ThermalDataWindow.uxml");
+                    Logger.LogError($"Failed to load {windowName}.uxml");
                     return;
                 }
 
-                var thermalDataWindow = CreateWindowFromUxml(handle.Result, "ThermalDataWindow");
-                var thermalDataWindowController =
-                    thermalDataWindow.gameObject.AddComponent<ThermalDataWindowController>();
-                thermalDataWindowController.IsWindowOpen = false;
-                DebugWindowController.ThermalToggle.RegisterCallback((ChangeEvent<bool> evt) =>
-                    thermalDataWindowController.IsWindowOpen = evt.newValue);
+                // Create UITK window
+                var window = CreateWindowFromUxml(handle1.Result, windowName);
+
+                // Attach window controller
+                var controller = window.gameObject.AddComponent<T>();
+                controller.IsWindowOpen = false;
+
+                // Setup window toggling & close button
+                DebugWindowController.RegisterToggle(windowName, toggleLabel,
+                    evt => controller.IsWindowOpen = evt.newValue);
+                controller.CloseButton.clicked += () =>
+                {
+                    controller.IsWindowOpen = false;
+                    DebugWindowController.WindowToggles[windowName].value = false;
+                };
             };
+        }
+
+        private static void CreateDebugWindows()
+        {
+            // Thermal data window
+            CreateDebugWindow<ThermalDataWindowController>("ThermalDataWindow", "Thermal Data");
+            
+            // Flight tools window
+            CreateDebugWindow<FlightToolsWindowController>("FlightToolsWindow", "Flight Tools");
         }
     }
 }

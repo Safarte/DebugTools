@@ -1,0 +1,131 @@
+.root {
+    max-width: 800px;
+    max-height: 600px;
+    min-height: 200px;
+    flex-direction: column;
+    min-width: 800px;
+}
+
+#title-bar {
+    justify-content: space-between;
+    margin-bottom: 12px;
+    margin-top: 0;
+    flex-grow: 1;
+    min-height: 25px;
+}
+
+#close-button {
+    margin-left: 0;
+    margin-right: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+#close-button:hover {
+    color: rgb(194, 41, 25);
+    border-left-color: rgb(194, 41, 25);
+    border-right-color: rgb(194, 41, 25);
+    border-top-color: rgb(194, 41, 25);
+    border-bottom-color: rgb(194, 41, 25);
+}
+
+.settings {
+    min-height: 90px;
+}
+
+.settings-row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.divider {
+    min-height: 2px;
+    background-color: rgb(134, 139, 148);
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.unity-toggle {
+    width: 45%;
+}
+
+.unity-base-popup-field__label {
+    -unity-text-align: middle-left;
+    min-width: 100px;
+}
+
+.unity-base-popup-field__text {
+    color: rgb(192, 199, 213);
+}
+
+.unity-base-popup-field__input:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.item-type {
+    min-width: 40%;
+}
+
+.unity-base-popup-field__label:hover {
+    -unity-text-align: middle-left;
+    min-width: 100px;
+}
+
+.sim-object-item {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.sim-object-item_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 20%;
+}
+
+.sim-object-item_physics-mode {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 12%;
+    flex-grow: 1;
+}
+
+.sim-object-item_parent-frame {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 25%;
+}
+
+.sim-object-item_load-unload {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 10%;
+}
+
+.joint-connection-item {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.joint-connection-item_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 20%;
+}
+
+.items-view {
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+}
