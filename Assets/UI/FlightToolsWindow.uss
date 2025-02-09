@@ -107,7 +107,7 @@
 .sim-object-item_load-unload {
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 10%;
+    width: 12%;
 }
 
 .joint-connection-item {

@@ -14,7 +14,7 @@ namespace DebugTools.Runtime.Controllers
         protected VisualElement RootElement;
     
         // The backing field for the IsWindowOpen property
-        private bool _isWindowOpen;
+        private bool _isWindowOpen = false;
     
         // Close button
         public Button CloseButton;

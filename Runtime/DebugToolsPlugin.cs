@@ -133,6 +133,9 @@ namespace DebugTools
             
             // Rendering debug window
             CreateDebugWindow<RenderingDebugWindowController>("RenderingDebugWindow", "Rendering Debug");
+            
+            // Joints tools window
+            CreateDebugWindow<JointsToolsWindowController>("JointsToolsWindow", "Joints Tools");
         }
     }
 }
