@@ -130,6 +130,9 @@ namespace DebugTools
             
             // Terrain debug window
             CreateDebugWindow<TerrainDebugWindowController>("TerrainDebugWindow", "Terrain Debug");
+            
+            // Rendering debug window
+            CreateDebugWindow<RenderingDebugWindowController>("RenderingDebugWindow", "Rendering Debug");
         }
     }
 }

@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/RenderingDebugWindow.uss?fileID=7433441132597879392&amp;guid=89bfe6a270668ff439ec6a0283a2ff58&amp;type=3#RenderingDebugWindow" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Rendering Debug" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="controls">
+            <ui:Toggle label="Physics Camera" name="physics-camera" class="toggle camera-toggle" />
+            <ui:Toggle label="Scaled Camera" name="scaled-camera" class="toggle camera-toggle" />
+            <ui:Toggle label="Flare Camera" name="flare-camera" class="toggle camera-toggle" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
