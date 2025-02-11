@@ -48,7 +48,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="toggles" class="sub-data" style="background-color: rgba(0, 0, 0, 0); padding-right: 10px;">
                 <ui:Toggle label="Multi Joints" name="multi-joints" class="toggle" style="width: 35%;" />
-                <ui:Toggle label="Inertia Tensor Fix" name="intertia-tensor-fix" class="toggle" style="width: 40%;" />
+                <ui:Toggle label="Inertia Tensor Fix" name="inertia-tensor-fix" class="toggle" style="width: 40%;" />
             </ui:VisualElement>
             <ui:VisualElement name="extra-joints" class="sub-data" style="background-color: rgba(0, 0, 0, 0); padding-right: 10px;">
                 <ui:Toggle label="Extra Joints" name="extra-joints" class="toggle" style="width: 35%; max-width: 35%; min-width: 35%;" />

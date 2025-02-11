@@ -1,0 +1,59 @@
+.root {
+    width: 500px;
+    max-height: 500px;
+}
+
+#title-bar {
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+
+#close-button {
+    margin-left: 0;
+    margin-right: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+#close-button:hover {
+    color: rgb(194, 41, 25);
+    border-left-color: rgb(194, 41, 25);
+    border-right-color: rgb(194, 41, 25);
+    border-top-color: rgb(194, 41, 25);
+    border-bottom-color: rgb(194, 41, 25);
+}
+
+.unity-popup-field__label {
+    -unity-text-align: middle-left;
+    min-width: 80px;
+}
+
+.unity-popup-field__text {
+    color: rgb(192, 199, 213);
+}
+
+.unity-popup-field__input {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(192, 199, 213);
+}
+
+.unity-popup-field__input:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.unity-popup-field__label:hover {
+    -unity-text-align: middle-left;
+    min-width: 100px;
+}
+
+.unity-toggle__label {
+    min-width: 100px;
+}

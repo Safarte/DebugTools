@@ -1,0 +1,38 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/ScienceToolsWindow.uss?fileID=7433441132597879392&amp;guid=2489ad47a778f5d4c9800e5353f5afe8&amp;type=3#ScienceToolsWindow" />
+    <ui:VisualElement name="root" class="root" style="max-height: 600px;">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Science Tools" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content">
+            <ui:Label tabindex="-1" text="Agency Name: &lt;b&gt;Kerbal Space Agency&lt;/b&gt;" display-tooltip-when-elided="true" name="agency-name" />
+            <ui:Label tabindex="-1" text="Science: &lt;b&gt;1234&lt;/b&gt; Available - &lt;b&gt;678&lt;/b&gt; Used - &lt;b&gt;91011&lt;/b&gt; Total" display-tooltip-when-elided="true" name="science-state" />
+            <ui:Toggle label="Unlock All Parts" name="unlock-all-parts" class="toggle" style="width: 40%;" />
+            <ui:VisualElement name="add" class="field">
+                <ui:TextField picking-mode="Ignore" label="Science Points" value="..." name="add-points-field" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Add" display-tooltip-when-elided="true" name="add-points" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="capacity" class="field">
+                <ui:TextField picking-mode="Ignore" label="Points Capacity" value="..." name="set-capacity-field" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Set" display-tooltip-when-elided="true" name="set-capacity" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="allocated" class="field">
+                <ui:TextField picking-mode="Ignore" label="Allocated Points" value="..." name="set-allocated-field" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Set" display-tooltip-when-elided="true" name="set-allocated" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="unlock" class="field">
+                <ui:DropdownField label="Tech Node" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="available-nodes" style="width: 75%; margin-left: 0; margin-right: 0;" />
+                <ui:Button text="Unlock" display-tooltip-when-elided="true" name="unlock-node" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="nodes-titles" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Loaded Tech Nodes:" display-tooltip-when-elided="true" style="width: 48%; height: 30px; -unity-text-align: upper-center;" />
+                <ui:Label tabindex="-1" text="Unlocked tech Nodes:" display-tooltip-when-elided="true" style="width: 48%; height: 30px; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="nodes" style="flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="loaded-nodes" style="width: 48%; height: auto; max-height: 200px;" />
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="unlocked-nodes" style="width: 48%; height: auto; max-height: 200px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

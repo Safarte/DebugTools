@@ -121,21 +121,20 @@ namespace DebugTools
         {
             // Thermal data window
             CreateDebugWindow<ThermalDataWindowController>("ThermalDataWindow", "Thermal Data");
-            
             // Flight tools window
             CreateDebugWindow<FlightToolsWindowController>("FlightToolsWindow", "Flight Tools");
-            
             // Quick actions window
             CreateDebugWindow<QuickSwitchWindowController>("QuickSwitchWindow", "Quick Switch");
-            
             // Terrain debug window
             CreateDebugWindow<TerrainDebugWindowController>("TerrainDebugWindow", "Terrain Debug");
-            
             // Rendering debug window
             CreateDebugWindow<RenderingDebugWindowController>("RenderingDebugWindow", "Rendering Debug");
-            
             // Joints tools window
             CreateDebugWindow<JointsToolsWindowController>("JointsToolsWindow", "Joints Tools");
+            // Science tools window
+            CreateDebugWindow<ScienceToolsWindowController>("ScienceToolsWindow", "Science Tools");
+            // Vessel science window
+            CreateDebugWindow<VesselScienceWindowController>("VesselScienceWindow", "Vessel Science");
         }
     }
 }

@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/VesselScienceWindow.uss?fileID=7433441132597879392&amp;guid=7ff452ae4fa10644b923b0f1a0043765&amp;type=3#VesselScienceWindow" />
+    <ui:VisualElement name="root" class="root" style="max-height: 600px;">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Vessel Science" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content">
+            <ui:Label tabindex="-1" text="Situation: " display-tooltip-when-elided="true" name="situation" />
+            <ui:Label tabindex="-1" text="Region: " display-tooltip-when-elided="true" name="region" style="margin-top: 4px;" />
+            <ui:Label tabindex="-1" text="Scalars: " display-tooltip-when-elided="true" name="scalars" style="margin-top: 4px;" />
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; justify-content: space-between; margin-top: 4px;">
+                <ui:DropdownField label="Vessel" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="vessel" style="width: 65%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                <ui:Toggle label="Use Active" name="use-active" class="toggle" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

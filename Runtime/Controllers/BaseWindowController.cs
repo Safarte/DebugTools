@@ -8,7 +8,7 @@ namespace DebugTools.Runtime.Controllers
     public class BaseWindowController : KerbalMonoBehaviour
     {
         // The UIDocument component of the window game object
-        protected UIDocument _window;
+        protected UIDocument Window;
 
         // Root VisualElement for the window
         protected VisualElement RootElement;
@@ -39,12 +39,12 @@ namespace DebugTools.Runtime.Controllers
         protected void Enable()
         {
             // Get the UIDocument component from the game object
-            _window = GetComponent<UIDocument>();
+            Window = GetComponent<UIDocument>();
 
             // Get the root element of the window.
             // Since we're cloning the UXML tree from a VisualTreeAsset, the actual root element is a TemplateContainer,
             // so we need to get the first child of the TemplateContainer to get our actual root VisualElement.
-            RootElement = _window.rootVisualElement[0];
+            RootElement = Window.rootVisualElement[0];
 
             // Center the window by default
             RootElement.CenterByDefault();
