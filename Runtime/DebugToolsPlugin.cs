@@ -56,9 +56,10 @@ namespace DebugTools
                 // Add a controller for the UI to the window's game object
                 DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
                 DebugWindowController.IsWindowOpen = false;
+                
+                CreateDebugWindows();
             };
 
-            CreateDebugWindows();
         }
 
         private static AsyncOperationHandle<VisualTreeAsset> LoadUxml(string name)
