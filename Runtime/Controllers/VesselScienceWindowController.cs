@@ -20,6 +20,10 @@ namespace DebugTools.Runtime.Controllers
         private DropdownField? _vessel;
         private Toggle? _useActive;
 
+        private Slider? _overlayStrength;
+        private PQSScienceOverlay? _scienceOverlay;
+        private Material? _regionBoundsMaterial;
+
         private readonly List<VesselComponent> _allVessels = new();
 
         private void OnEnable()
@@ -33,6 +37,8 @@ namespace DebugTools.Runtime.Controllers
             _vessel = RootElement.Q<DropdownField>("vessel");
             _useActive = RootElement.Q<Toggle>("use-active");
             _useActive.value = true;
+            
+            _overlayStrength = RootElement.Q<Slider>("overlay-strength");
         }
 
         private void Awake()
@@ -40,6 +46,15 @@ namespace DebugTools.Runtime.Controllers
             Game.Messages.Subscribe<AddVesselToMapMessage>(OnVesselAdded);
             Game.Messages.Subscribe<VesselDestroyedMessage>(OnVesselRemoved);
             Game.Messages.Subscribe<GameLoadFinishedMessage>(OnGameLoaded);
+
+            var handle =
+                Addressables.LoadAssetAsync<Material>("Assets/Modules/DebugTools/Assets/UI/PhysXBubbleMat.mat");
+            handle.Completed += handle1 =>
+            {
+                if (handle1.Status != AsyncOperationStatus.Succeeded)
+                    DebugToolsPlugin.Logger.LogError("Failed to load PhysXBubbleMat.mat");
+                _regionBoundsMaterial = handle1.Result;
+            };
         }
 
         private void OnDestroy()
@@ -52,6 +67,7 @@ namespace DebugTools.Runtime.Controllers
         private void OnGameLoaded(MessageCenterMessage msg)
         {
             _allVessels.AddRange(Game.UniverseModel.GetAllVessels());
+            _scienceOverlay = Window.gameObject.AddComponent<PQSScienceOverlay>();
             UpdateVesselDropdown();
         }
 
@@ -113,6 +129,24 @@ namespace DebugTools.Runtime.Controllers
 
             _scienceScalars!.text = $"Scalars (CB/Sit./Reg.): " +
                                     $"{situation.CelestialBodyScalar}/{situation.SituationScalar}/{situation.ScienceRegionScalar}";
+
+            
+            if (_scienceOverlay == null || _regionBoundsMaterial == null) return;
+            
+            var showOverlay = _overlayStrength?.value > 0 && vessel?.mainBody != null;
+            if (showOverlay &&
+                Game?.ScienceManager is { ScienceRegionsDataProvider: not null })
+            {
+                DebugToolsPlugin.Logger.LogInfo("Showing science region overlay");
+                _scienceOverlay.SetScienceRegionsDataProvider(Game.ScienceManager.ScienceRegionsDataProvider);
+                var celestialBodyBehavior = vessel!.mainBody.SurfaceProvider as CelestialBodyBehavior;
+                var celestialBody = (celestialBodyBehavior != null) ? celestialBodyBehavior.PqsController : null;
+                _scienceOverlay.SetCelestialBody(celestialBody);
+                _scienceOverlay.Strength = _overlayStrength!.value;
+            }
+            _scienceOverlay.enabled = showOverlay;
+            PQSObject.RegionBoundingSphereMaterial = _regionBoundsMaterial;
+            PQSObject.ShowScienceRegionInfo = showOverlay;
         }
     }
 }
