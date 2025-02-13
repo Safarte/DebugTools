@@ -56,10 +56,13 @@ namespace DebugTools
                 // Add a controller for the UI to the window's game object
                 DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
                 DebugWindowController.IsWindowOpen = false;
-                
-                CreateDebugWindows();
-            };
 
+                CreateDebugWindows();
+                DebugWindowController.RegisterToggle("VFXTestSuite", "VFX Test Suite",
+                    evt => GameManager.Instance.Game.VFXTestSuiteDialog.IsVisible = evt.newValue);
+                DebugWindowController.RegisterToggle("FXDebugTools", "FX Debug Tools",
+                    evt => GameManager.Instance.Game.FXDebugTools.IsVisible = evt.newValue);
+            };
         }
 
         private static AsyncOperationHandle<VisualTreeAsset> LoadUxml(string name)
