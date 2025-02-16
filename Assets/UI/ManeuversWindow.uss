@@ -1,6 +1,7 @@
 .root {
-    max-height: 600px;
-    width: 250px;
+    max-width: 500px;
+    max-height: 400px;
+    min-height: 100px;
     background-color: rgba(34, 38, 46, 0.85);
 }
 
@@ -8,6 +9,7 @@
     justify-content: space-between;
     margin-bottom: 8px;
     margin-top: 0;
+    min-height: 30px;
 }
 
 #close-button {
@@ -30,4 +32,21 @@
     border-right-color: rgb(194, 41, 25);
     border-top-color: rgb(194, 41, 25);
     border-bottom-color: rgb(194, 41, 25);
+}
+
+.maneuver-node {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.maneuver-node__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 25%;
+}
+
+.maneuver-node__item {
+    width: 25%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

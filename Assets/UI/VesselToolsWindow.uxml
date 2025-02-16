@@ -1,0 +1,51 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/VesselToolsWindow.uss?fileID=7433441132597879392&amp;guid=6432abe36f3f99a4487427c943339ec3&amp;type=3#VesselToolsWindow" />
+    <ui:VisualElement name="root" class="root" style="padding-left: 6px; padding-right: 6px; width: 510px;">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Vessel Tools" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content">
+            <ui:VisualElement name="window-toggles" style="flex-direction: row; justify-content: space-between;">
+                <ui:Label tabindex="-1" text="Windows:" display-tooltip-when-elided="true" style="-unity-font-style: normal; color: rgb(154, 158, 167);" />
+                <ui:Toggle label="Parts Mass Stats" name="mass-stats-toggle" class="toggle window-toggle" />
+                <ui:Toggle label="Maneuver Nodes" name="maneuvers-toggle" class="toggle window-toggle" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Flight Axes ===============================================" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167); margin-top: 4px;" />
+            <ui:VisualElement name="arrows-axes" style="flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
+                <ui:Toggle label="Show Control Points" name="show-control-points" class="toggle window-toggle item" />
+                <ui:Toggle label="Add Navball Rotation" name="cp-follow-navball" class="toggle item" />
+                <ui:Toggle label="Show SAS Targets" name="show-sas" class="toggle item" />
+                <ui:Toggle label="Show Orbit Points" name="show-orbit-points" class="toggle item" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Joints =====================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(153, 158, 166); margin-top: 4px;" />
+            <ui:VisualElement name="joints" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
+                <ui:Toggle label="Inertia Tensor Scaling" name="inertia-tensor-scaling" class="toggle item" />
+                <ui:Toggle label="Dynamic Tensor Sol." name="dynamic-tensor-solution" class="toggle item" />
+                <ui:Toggle label="Scaled Solver Iter." name="scaled-solver-iteration" class="toggle item" />
+                <ui:Toggle label="Multi Joints" name="multi-joints" class="toggle item" />
+                <ui:Toggle label="Joints Enabled" name="joints-enabled" class="toggle item" />
+                <ui:Toggle label="Show Joints" name="show-joints" class="toggle item" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Buoyancy =====================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(153, 158, 166); margin-top: 4px;" />
+            <ui:VisualElement name="buoyancy" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
+                <ui:Toggle label="Parts Bounds" name="parts-bounds" class="toggle" style="width: 31%;" />
+                <ui:Toggle label="Parts Depths" name="parts-depths" class="toggle" style="width: 31%;" />
+                <ui:Toggle label="Show CoB" name="show-cob" class="toggle" style="width: 31%;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Misc =====================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(153, 158, 166); margin-top: 4px;" />
+            <ui:VisualElement name="misc-toggles" style="flex-direction: row; justify-content: space-between; flex-wrap: wrap; height: 60px;">
+                <ui:Toggle label="Show CoM Markers" name="show-com-markers" class="toggle window-toggle item" />
+                <ui:Slider picking-mode="Ignore" label="Marker Size" value="2" high-value="10" name="com-markers-size" class="item" />
+                <ui:Toggle label="Show Physics Force" name="show-physics-force" class="toggle item" />
+                <ui:Toggle label="List Input Values" name="show-input-values" value="true" class="toggle item" />
+            </ui:VisualElement>
+            <ui:VisualElement name="input-values" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; padding-left: 8px; padding-right: 8px;">
+                <ui:Label tabindex="-1" text="Pitch:" display-tooltip-when-elided="true" name="pitch" style="width: 30%;" />
+                <ui:Label tabindex="-1" text="Yaw:" display-tooltip-when-elided="true" name="yaw" style="width: 30%;" />
+                <ui:Label tabindex="-1" text="Roll:" display-tooltip-when-elided="true" name="roll" style="width: 30%;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Control State: " display-tooltip-when-elided="true" name="control-state" style="padding-left: 9px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

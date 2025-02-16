@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using DebugTools.Runtime.Controllers;
 using DebugTools.Runtime.Controllers.FlightTools;
+using DebugTools.Runtime.Controllers.VesselTools;
 using DebugTools.Utils;
 using KSP.Game;
 using UitkForKsp2.API;
@@ -15,11 +16,7 @@ namespace DebugTools
 {
     public class DebugToolsPlugin : KerbalMonoBehaviour
     {
-        /// Singleton instance of the plugin class
-        [PublicAPI]
-        public static DebugToolsPlugin Instance { get; set; }
-
-        public static DebugWindowController DebugWindowController { get; set; }
+        private static DebugWindowController? DebugWindowController { get; set; }
 
         internal static ILogger Logger;
 
@@ -42,7 +39,7 @@ namespace DebugTools
         {
             Configuration.Initialize(ReduxLib.ReduxLib.ReduxCoreConfig);
 
-            var debugHandle = LoadUxml("DebugWindow");
+            var debugHandle = UITKHelper.LoadUxml("DebugWindow");
             debugHandle.Completed += handle =>
             {
                 if (handle.Status != AsyncOperationStatus.Succeeded)
@@ -52,7 +49,7 @@ namespace DebugTools
                 }
 
                 // Create main debug window
-                var debugWindow = CreateWindowFromUxml(handle.Result, "DebugWindow");
+                var debugWindow = UITKHelper.CreateWindowFromUxml(handle.Result, "DebugWindow");
                 // Add a controller for the UI to the window's game object
                 DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
                 DebugWindowController.IsWindowOpen = false;
@@ -65,36 +62,10 @@ namespace DebugTools
             };
         }
 
-        private static AsyncOperationHandle<VisualTreeAsset> LoadUxml(string name)
-        {
-            return Addressables.LoadAssetAsync<VisualTreeAsset>($"Assets/Modules/DebugTools/Assets/UI/{name}.uxml");
-        }
-
-        private static UIDocument CreateWindowFromUxml(VisualTreeAsset uxml, string name)
-        {
-            // Create the window options object
-            var windowOptions = new WindowOptions
-            {
-                WindowId = $"DebugTools_{name}",
-                Parent = null,
-                IsHidingEnabled = true,
-                DisableGameInputForTextFields = true,
-                MoveOptions = new MoveOptions
-                {
-                    IsMovingEnabled = true,
-                    CheckScreenBounds = true
-                }
-            };
-
-            // Create the window
-            Instantiate(uxml);
-            return Window.Create(windowOptions, uxml);
-        }
-
         private static void CreateDebugWindow<T>(string windowName, string toggleLabel) where T : BaseWindowController
         {
             // Load window UXML
-            var handle = LoadUxml(windowName);
+            var handle = UITKHelper.LoadUxml(windowName);
             handle.Completed += handle1 =>
             {
                 if (handle1.Status != AsyncOperationStatus.Succeeded)
@@ -104,7 +75,7 @@ namespace DebugTools
                 }
 
                 // Create UITK window
-                var window = CreateWindowFromUxml(handle1.Result, windowName);
+                var window = UITKHelper.CreateWindowFromUxml(handle1.Result, windowName);
 
                 // Attach window controller
                 var controller = window.gameObject.AddComponent<T>();
@@ -123,18 +94,20 @@ namespace DebugTools
 
         private static void CreateDebugWindows()
         {
-            // Thermal data window
-            CreateDebugWindow<ThermalDataWindowController>("ThermalDataWindow", "Thermal Data");
+            // Vessel tools window
+            CreateDebugWindow<VesselToolsWindowController>("VesselToolsWindow", "Vessel Tools");
             // Flight tools window
             CreateDebugWindow<FlightToolsWindowController>("FlightToolsWindow", "Flight Tools");
+            // Joints tools window
+            CreateDebugWindow<JointsToolsWindowController>("JointsToolsWindow", "Joints Tools");
+            // Thermal data window
+            CreateDebugWindow<ThermalDataWindowController>("ThermalDataWindow", "Thermal Data");
             // Quick actions window
             CreateDebugWindow<QuickSwitchWindowController>("QuickSwitchWindow", "Quick Switch");
             // Terrain debug window
             CreateDebugWindow<TerrainDebugWindowController>("TerrainDebugWindow", "Terrain Debug");
             // Rendering debug window
             CreateDebugWindow<RenderingDebugWindowController>("RenderingDebugWindow", "Rendering Debug");
-            // Joints tools window
-            CreateDebugWindow<JointsToolsWindowController>("JointsToolsWindow", "Joints Tools");
             // Science tools window
             CreateDebugWindow<ScienceToolsWindowController>("ScienceToolsWindow", "Science Tools");
             // Vessel science window

@@ -1,6 +1,7 @@
 .root {
     max-width: 400px;
     max-height: 400px;
+    background-color: rgba(34, 38, 46, 0.85);
 }
 
 #title-bar {
@@ -35,6 +36,7 @@
     width: 30%;
     margin-top: 8px;
     height: 60px;
+    background-color: rgba(34, 38, 46, 0.85);
 }
 
 .actions {
