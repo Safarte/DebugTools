@@ -1,7 +1,7 @@
 .root {
     max-height: 600px;
     width: 250px;
-    background-color: rgba(34, 38, 46, 0.85);
+    background-color: rgba(34, 38, 46, 0.95);
 }
 
 #title-bar {

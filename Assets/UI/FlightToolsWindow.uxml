@@ -19,7 +19,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="divider" class="divider" />
-        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="items-view" class="items-view">
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="items-view" class="items-view" style="background-color: rgba(34, 38, 46, 0.5);">
             <DebugTools.Runtime.UI.FlightTools.SimObjectItem IsLoaded="false" />
             <DebugTools.Runtime.UI.FlightTools.JointConnectionItem />
         </ui:ScrollView>

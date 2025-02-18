@@ -1,7 +1,7 @@
 .root {
     width: 550px;
     max-height: 500px;
-    background-color: rgba(34, 38, 46, 0.85);
+    background-color: rgba(34, 38, 46, 0.95);
 }
 
 #title-bar {
@@ -66,5 +66,5 @@
 
 .item {
     width: 48%;
-    max-height: 30px;
+    max-height: 32px;
 }

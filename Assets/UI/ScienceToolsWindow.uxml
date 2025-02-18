@@ -30,8 +30,8 @@
                 <ui:Label tabindex="-1" text="Unlocked tech Nodes:" display-tooltip-when-elided="true" style="width: 48%; height: 30px; -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="nodes" style="flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
-                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="loaded-nodes" style="width: 48%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.85);" />
-                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="unlocked-nodes" style="width: 48%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.85);" />
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="loaded-nodes" style="width: 48%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.5);" />
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="unlocked-nodes" style="width: 48%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.5);" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
