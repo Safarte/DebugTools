@@ -6,6 +6,7 @@
             <ui:Button text="×" name="close-button" />
         </ui:VisualElement>
         <ui:VisualElement name="content">
+            <ui:Label tabindex="-1" text="Research Location: " display-tooltip-when-elided="true" name="research-location" />
             <ui:Label tabindex="-1" text="Situation: " display-tooltip-when-elided="true" name="situation" />
             <ui:Label tabindex="-1" text="Region: " display-tooltip-when-elided="true" name="region" style="margin-top: 4px;" />
             <ui:Label tabindex="-1" text="Scalars: " display-tooltip-when-elided="true" name="scalars" style="margin-top: 4px;" />

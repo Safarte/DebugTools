@@ -13,6 +13,7 @@ namespace DebugTools.Runtime.Controllers
 {
     public class VesselScienceWindowController : BaseWindowController
     {
+        private Label? _researchLocation;
         private Label? _scienceSituation;
         private Label? _scienceRegion;
         private Label? _scienceScalars;
@@ -30,6 +31,7 @@ namespace DebugTools.Runtime.Controllers
         {
             Enable();
 
+            _researchLocation = RootElement.Q<Label>("research-location");
             _scienceSituation = RootElement.Q<Label>("situation");
             _scienceRegion = RootElement.Q<Label>("region");
             _scienceScalars = RootElement.Q<Label>("scalars");
@@ -118,6 +120,8 @@ namespace DebugTools.Runtime.Controllers
             if (vessel == null) return;
 
             var situation = vessel.VesselScienceRegionSituation;
+            
+            _researchLocation!.text = $"Research Location: <b>{situation.ResearchLocation.ResearchLocationId}</b>";
 
             _scienceSituation!.text =
                 $"Situation: <b>{situation.ResearchLocation.ScienceSituation.GetTranslatedDescription()}</b>" +
@@ -126,7 +130,7 @@ namespace DebugTools.Runtime.Controllers
             _scienceRegion!.text =
                 $"Region: <b>{ScienceRegionsHelper.GetRegionDisplayName(situation.ResearchLocation.ScienceRegion)}</b>" +
                 $" (<b>{situation.ResearchLocation.ScienceRegion}</b>)";
-
+            
             _scienceScalars!.text = $"Scalars (CB/Sit./Reg.): " +
                                     $"{situation.CelestialBodyScalar}/{situation.SituationScalar}/{situation.ScienceRegionScalar}";
 

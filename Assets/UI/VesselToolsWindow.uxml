@@ -6,9 +6,10 @@
             <ui:Button text="×" name="close-button" />
         </ui:VisualElement>
         <ui:VisualElement name="content">
+            <ui:Label tabindex="-1" text="Stats ======================================================" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
             <ui:VisualElement name="window-toggles" style="flex-direction: row; justify-content: space-between;">
-                <ui:Label tabindex="-1" text="Windows:" display-tooltip-when-elided="true" style="-unity-font-style: normal; color: rgb(154, 158, 167);" />
-                <ui:Toggle label="Parts Mass Stats" name="mass-stats-toggle" class="toggle window-toggle" />
+                <ui:Toggle label="Thermal Data" name="thermal-data-toggle" class="toggle window-toggle" />
+                <ui:Toggle label="Parts Mass" name="mass-stats-toggle" class="toggle window-toggle" />
                 <ui:Toggle label="Maneuver Nodes" name="maneuvers-toggle" class="toggle window-toggle" />
             </ui:VisualElement>
             <ui:Label tabindex="-1" text="Flight Axes ===============================================" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167); margin-top: 4px;" />
@@ -29,14 +30,13 @@
             </ui:VisualElement>
             <ui:Label tabindex="-1" text="Buoyancy =====================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(153, 158, 166); margin-top: 4px;" />
             <ui:VisualElement name="buoyancy" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: wrap; justify-content: space-between;">
-                <ui:Toggle label="Parts Bounds" name="parts-bounds" class="toggle" style="width: 31%;" />
-                <ui:Toggle label="Parts Depths" name="parts-depths" class="toggle" style="width: 31%;" />
-                <ui:Toggle label="Show CoB" name="show-cob" class="toggle" style="width: 31%;" />
+                <ui:Toggle label="Show Parts Bounds" name="parts-bounds" class="toggle" style="width: 48%;" />
+                <ui:Toggle label="Show Buoyancy" name="show-cob" class="toggle" style="width: 48%;" />
             </ui:VisualElement>
             <ui:Label tabindex="-1" text="Misc =====================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(153, 158, 166); margin-top: 4px;" />
             <ui:VisualElement name="misc-toggles" style="flex-direction: row; justify-content: space-between; flex-wrap: wrap; height: 60px;">
                 <ui:Toggle label="Show CoM Markers" name="show-com-markers" class="toggle window-toggle item" />
-                <ui:Slider picking-mode="Ignore" label="Marker Size" value="2" high-value="10" name="com-markers-size" class="item" />
+                <ui:Slider picking-mode="Ignore" label="Marker Size" value="1" high-value="5" name="com-markers-size" class="item" />
                 <ui:Toggle label="Show Physics Force" name="show-physics-force" class="toggle item" />
                 <ui:Toggle label="List Input Values" name="show-input-values" value="true" class="toggle item" />
             </ui:VisualElement>

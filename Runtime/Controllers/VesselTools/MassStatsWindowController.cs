@@ -48,7 +48,7 @@ namespace DebugTools.Runtime.Controllers.VesselTools
                 _vesselRow.PartName.text = $"<b>{vessel.RevealDisplayName()}</b>";
                 _vesselRow.ModelMass.text = $"<b>{vessel.totalMass:F2}</b>";
                 _itemsView.Add(_vesselRow);
-
+                
                 foreach (var part in behavior.parts)
                 {
                     row = new PartDetailsRow();
@@ -65,10 +65,7 @@ namespace DebugTools.Runtime.Controllers.VesselTools
 
             var i = 0;
             foreach (var part in behavior.parts)
-            {
-                FormatMassStats(_rows[i], part);
-                ++i;
-            }
+                FormatMassStats(_rows[i++], part);
         }
 
         private static void FormatMassStats(PartDetailsRow row, PartBehavior part)

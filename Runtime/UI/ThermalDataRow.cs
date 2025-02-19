@@ -86,6 +86,26 @@ namespace DebugTools.Runtime.UI
             hierarchy.Add(IsShielded);
         }
 
+        public ThermalDataRow(bool isHeader) : this()
+        {
+            if (!isHeader) return;
+            
+            PartName.text = "Part";
+            ThermalMass.text = "M<sub>th</sub>";
+            Temperature.text = "T<sub>part</sub>/T<sub>max</sub>";
+            WettedArea.text = "A<sub>wet</sub>";
+            ShockMult.text = "p<sub>shock</sub>";
+            EnvironmentFlux.text = "Q<sub>env</sub>";
+            ReentryFlux.text = "Q<sub>reentry</sub>";
+            OtherFlux.text = "Q<sub>other</sub>";
+            ExposedArea.text = "A<sub>exp</sub>";
+            ShockArea.text = "A<sub>reentry</sub>";
+            ConeType.text = "C<sub>type</sub>";
+            ShockAngle.text = "Z<sub>shk</sub>";
+            ShockDistance.text = "D<sub>shk</sub>";
+            IsShielded.text = "Shield";
+        }
+
         public new class UxmlFactory : UxmlFactory<ThermalDataRow, UxmlTraits>
         {
         }
