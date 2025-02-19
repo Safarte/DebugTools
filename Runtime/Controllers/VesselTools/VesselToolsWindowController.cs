@@ -957,11 +957,8 @@ namespace DebugTools.Runtime.Controllers.VesselTools
             _vessels = _view.Universe.GetAllVessels();
             foreach (var vessel in _vessels)
             {
-                var behavior = _view.GetBehaviorIfLoaded(vessel);
-                if (behavior == null) continue;
-
                 var markerObject = new GameObject(vessel.Name + "_CoM");
-                markerObject.transform.parent = behavior.transform;
+                markerObject.transform.parent = Window.transform;
 
                 var marker = markerObject.AddComponent<DebugShapesSphereMarker>();
                 marker.SetRadius(1f);
@@ -973,10 +970,8 @@ namespace DebugTools.Runtime.Controllers.VesselTools
 
         private void UpdateVesselsCoM()
         {
-            GlobalLog.Log($"{_view == null} {_showCoMMarkers == null} {_markerSize==null}");
             if (_view == null || _showCoMMarkers == null || _markerSize == null) return;
 
-            GlobalLog.Log(_state.ToString());
             if (_state != GameState.FlightView && _state != GameState.Launchpad && _state != GameState.Runway) return;
 
             _vessels = _view.Universe.GetAllVessels();
@@ -985,7 +980,6 @@ namespace DebugTools.Runtime.Controllers.VesselTools
                 CreateCoMMarkers();
             
             
-            GlobalLog.Log("Updating CoM markers...");
             var i = 0;
             foreach (var vessel in _vessels)
             {
