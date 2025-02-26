@@ -1,0 +1,28 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/KerbalRosterToolWindow.uss?fileID=7433441132597879392&amp;guid=950d6e837f92a714fbccbf76c2612da2&amp;type=3#KerbalRosterToolWindow" />
+    <ui:VisualElement name="root" class="root" style="max-height: 600px;">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Kerbal Roster Tools" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content">
+            <ui:VisualElement name="buttons" class="field" style="flex-direction: row; justify-content: space-around;">
+                <ui:Button text="Add Random Kerbal" display-tooltip-when-elided="true" name="add-random-kerbal" style="width: 40%;" />
+                <ui:Button text="Reset Kerbal Roster" display-tooltip-when-elided="true" name="reset-kerbal-roster" style="width: 40%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="name" class="field">
+                <ui:TextField picking-mode="Ignore" label="Add Kerbal By Name" value="..." name="add-by-name-field" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Add" display-tooltip-when-elided="true" name="add-by-name" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="number" class="field">
+                <ui:TextField picking-mode="Ignore" label="Add X Kerbals" value="..." name="add-x-field" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Add" display-tooltip-when-elided="true" name="add-x" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Kerbal Roster:" display-tooltip-when-elided="true" />
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="roster" style="width: 100%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.5);">
+                <DebugTools.Runtime.UI.KerbalRosterRow />
+                <DebugTools.Runtime.UI.KerbalRosterRow IsHeader="false" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

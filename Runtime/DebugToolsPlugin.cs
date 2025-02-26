@@ -108,6 +108,8 @@ namespace DebugTools
             CreateDebugWindow<ScienceToolsWindowController>("ScienceToolsWindow", "Science Tools");
             // Vessel science window
             CreateDebugWindow<VesselScienceWindowController>("VesselScienceWindow", "Vessel Science");
+            // Kerbal roster tools window
+            CreateDebugWindow<KerbalRosterToolWindowController>("KerbalRosterToolWindow", "Roster Tools");
         }
     }
 }
