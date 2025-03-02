@@ -110,6 +110,8 @@ namespace DebugTools
             CreateDebugWindow<VesselScienceWindowController>("VesselScienceWindow", "Vessel Science");
             // Kerbal roster tools window
             CreateDebugWindow<KerbalRosterToolWindowController>("KerbalRosterToolWindow", "Roster Tools");
+            // Teleport bookmarks window
+            CreateDebugWindow<TeleportBookmarksWindowController>("TeleportBookmarksWindow", "Teleport Bookmarks");
         }
     }
 }

@@ -1,0 +1,39 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/TeleportBookmarksWindow.uss?fileID=7433441132597879392&amp;guid=188e3551c3d777149acf76ec2d75fc01&amp;type=3#TeleportBookmarksWindow" />
+    <ui:VisualElement name="root" class="root" style="max-height: 600px;">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Teleport Bookmarks" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content">
+            <ui:VisualElement name="buttons" class="field" style="flex-direction: row; justify-content: space-between;">
+                <ui:Toggle label="Auto-save on Teleport" name="autosave-on-teleport" class="toggle" style="width: 48%; align-self: center;" />
+                <ui:Button text="Teleport to KSC" display-tooltip-when-elided="true" name="teleport-to-ksc" style="width: 48%;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Bookmarks Lists =============================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(154, 158, 167);" />
+            <ui:VisualElement name="new-list" class="field">
+                <ui:TextField picking-mode="Ignore" label="New Bookmarks List" value="..." name="bookmarks-list-name" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Create" display-tooltip-when-elided="true" name="create-bookmarks-list" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="lists" class="field" style="flex-direction: row; justify-content: space-between; height: 35px; align-items: center;">
+                <ui:DropdownField label="Selected" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="selected-list" style="width: 60%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                <ui:Button text="Delete" display-tooltip-when-elided="true" name="delete-list" style="width: 15%; height: 35px;" />
+                <ui:Button text="Save Lists" display-tooltip-when-elided="true" name="save-lists" style="width: 20%; height: 35px;" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Bookmarks =============================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(154, 158, 167);" />
+            <ui:VisualElement name="bookmark" class="field">
+                <ui:TextField picking-mode="Ignore" label="New Bookmark Name" value="..." name="save-bookmark-field" style="width: 75%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Add" display-tooltip-when-elided="true" name="save-bookmark" style="height: 35px; width: 20%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="buttons" class="field" style="flex-direction: row; justify-content: space-between;">
+                <ui:Button text="Previous Bookmark" display-tooltip-when-elided="true" name="previous-bookmark" style="width: 48%;" />
+                <ui:Button text="Next Bookmark" display-tooltip-when-elided="true" name="next-bookmark" style="width: 48%;" />
+            </ui:VisualElement>
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="bookmarks" style="width: 100%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.5); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                <DebugTools.Runtime.UI.TeleportBookmarkRow />
+                <DebugTools.Runtime.UI.TeleportBookmarkRow IsHeader="false" class="teleport-bookmark-row__selected" />
+                <DebugTools.Runtime.UI.TeleportBookmarkRow IsHeader="false" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
