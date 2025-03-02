@@ -1,2 +1,128 @@
 [
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Jool Orbit",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Jool",
+      "inclination": 2.4148365394514667E-06,
+      "eccentricity": 8.7839204617433519E-08,
+      "semiMajorAxis": 51000004.57526651,
+      "longitudeOfAscendingNode": 281.22842095778611,
+      "argumentOfPeriapsis": 80.660306461376734,
+      "meanAnomalyAtEpoch": -0.032926665034961181,
+      "epoch": 202.73999546840787
+    }
+  },
+  {
+    "Type": "Surface",
+    "BookmarkName": "Launchpad-1",
+    "State": {
+      "ReferenceBodyGuid": "Kerbin",
+      "Altitude": 1.226362943649292,
+      "Latitude": -0.42653726269148151,
+      "Longitude": -74.829645363168808,
+      "VerticalSpeed": -0.0013886236447698784
+    },
+    "OrbitState": {
+      "referenceBodyGuid": null,
+      "inclination": 0.0,
+      "eccentricity": 0.0,
+      "semiMajorAxis": 0.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": 0.0,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "LKO",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Kerbin",
+      "inclination": 0.00017558908987415565,
+      "eccentricity": 1.1172440823999464E-06,
+      "semiMajorAxis": 699999.348638834,
+      "longitudeOfAscendingNode": 269.20258253642368,
+      "argumentOfPeriapsis": 279.56479727577528,
+      "meanAnomalyAtEpoch": 2.9913962820415145,
+      "epoch": 83.45999813452363
+    }
+  },
+  {
+    "Type": "Surface",
+    "BookmarkName": "Mun Surface",
+    "State": {
+      "ReferenceBodyGuid": "Mun",
+      "Altitude": 1.1890891790390015,
+      "Latitude": -0.44000217710513706,
+      "Longitude": 83.548006541131315,
+      "VerticalSpeed": -0.002828992070283292
+    },
+    "OrbitState": {
+      "referenceBodyGuid": null,
+      "inclination": 0.0,
+      "eccentricity": 0.0,
+      "semiMajorAxis": 0.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": 0.0,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Surface",
+    "BookmarkName": "Runway-1",
+    "State": {
+      "ReferenceBodyGuid": "Kerbin",
+      "Altitude": 1.2263878583908081,
+      "Latitude": -0.62781822855591707,
+      "Longitude": -75.306899807205426,
+      "VerticalSpeed": -0.00709786168927471
+    },
+    "OrbitState": {
+      "referenceBodyGuid": null,
+      "inclination": 0.0,
+      "eccentricity": 0.0,
+      "semiMajorAxis": 0.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": 0.0,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Tylo Orbit",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Tylo",
+      "inclination": 0.00018922598104977023,
+      "eccentricity": 4.5814708400628437E-07,
+      "semiMajorAxis": 650000.3765915184,
+      "longitudeOfAscendingNode": 271.40680245369549,
+      "argumentOfPeriapsis": 90.215058499372418,
+      "meanAnomalyAtEpoch": -0.022661838121067226,
+      "epoch": 276.95999380946159
+    }
+  }
 ]

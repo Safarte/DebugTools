@@ -3,10 +3,10 @@
   "BookmarkName": "KSC",
   "State": {
     "ReferenceBodyGuid": "Kerbin",
-    "Altitude": 10.98104190826416,
-    "Latitude": -0.4265156379726226,
-    "Longitude": -74.829654714809024,
-    "VerticalSpeed": 0.0037202958799217411
+    "Altitude": 1.226362943649292,
+    "Latitude": -0.42653726269148151,
+    "Longitude": -74.829645363168808,
+    "VerticalSpeed": -0.0013886236447698784
   },
   "OrbitState": {
     "referenceBodyGuid": null,
