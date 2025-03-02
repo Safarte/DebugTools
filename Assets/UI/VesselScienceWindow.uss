@@ -1,6 +1,6 @@
 .root {
-    width: 500px;
-    max-height: 500px;
+    width: 600px;
+    max-height: 650px;
     background-color: rgba(34, 38, 46, 0.95);
 }
 
@@ -57,4 +57,17 @@
 
 .unity-toggle__label {
     min-width: 100px;
+}
+
+.report-button {
+    width: 23%;
+}
+
+.overflow-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unity-slider__label {
+    margin-right: 40px;
 }

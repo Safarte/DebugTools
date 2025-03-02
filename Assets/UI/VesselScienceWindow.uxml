@@ -6,15 +6,32 @@
             <ui:Button text="×" name="close-button" />
         </ui:VisualElement>
         <ui:VisualElement name="content">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; justify-content: space-between; margin-top: 4px;">
+                <ui:DropdownField label="Vessel" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="vessel" style="width: 60%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                <ui:Toggle label="Use Active" name="use-active" class="toggle" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Situation ==============================================================" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
             <ui:Label tabindex="-1" text="Research Location: " display-tooltip-when-elided="true" name="research-location" />
             <ui:Label tabindex="-1" text="Situation: " display-tooltip-when-elided="true" name="situation" />
             <ui:Label tabindex="-1" text="Region: " display-tooltip-when-elided="true" name="region" style="margin-top: 4px;" />
             <ui:Label tabindex="-1" text="Scalars: " display-tooltip-when-elided="true" name="scalars" style="margin-top: 4px;" />
-            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; align-items: center; justify-content: space-between; margin-top: 4px;">
-                <ui:DropdownField label="Vessel" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="vessel" style="width: 65%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
-                <ui:Toggle label="Use Active" name="use-active" class="toggle" />
-            </ui:VisualElement>
             <ui:Slider picking-mode="Ignore" label="Region Overlay Strength" value="0" high-value="1" name="overlay-strength" style="margin-top: 4px;" />
+            <ui:Label tabindex="-1" text="Experiment Reports ======================================================" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
+            <ui:Label tabindex="-1" text="Has Research Report Storage Capability: &lt;b&gt;YES&lt;/b&gt;" display-tooltip-when-elided="true" name="has-storage-capacity" />
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                <ui:Button text="Create" display-tooltip-when-elided="true" name="create-report" class="report-button" />
+                <ui:Button text="Submit" display-tooltip-when-elided="true" name="submit-report" class="report-button" />
+                <ui:Button text="Transmit" display-tooltip-when-elided="true" name="transmit-report" class="report-button" />
+                <ui:Button text="Delete" display-tooltip-when-elided="true" name="delete-reports" class="report-button" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-top: 4px;">
+                <ui:Label tabindex="-1" text="Experiment IDs" display-tooltip-when-elided="true" style="width: 30%; -unity-text-align: upper-center;" />
+                <ui:Label tabindex="-1" text="Reports" display-tooltip-when-elided="true" style="width: 66%; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-top: 4px;">
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="experiment-ids" style="width: 30%;" />
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="reports" style="width: 66%;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

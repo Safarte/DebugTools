@@ -61,6 +61,7 @@ namespace DebugTools.Runtime.Controllers
             Enable();
 
             _autoSaveOnTeleport = RootElement.Q<Toggle>("autosave-on-teleport");
+            _autoSaveOnTeleport.value = false;
 
             _teleportToKSC = RootElement.Q<Button>("teleport-to-ksc");
             _teleportToKSC.clicked += OnTeleportToKSC;
@@ -100,7 +101,7 @@ namespace DebugTools.Runtime.Controllers
             // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
             if (activeVehicle == null) return;
 
-            if (_autoSaveOnTeleport?.value ?? false)
+            if (_autoSaveOnTeleport != null && _autoSaveOnTeleport.value)
                 Game.SaveLoadManager.ForceQuickSave();
 
             var guid = activeVehicle.Guid.ToString();
@@ -456,7 +457,15 @@ namespace DebugTools.Runtime.Controllers
         {
             var i = 0;
             foreach (var row in _teleportBookmarks)
-                row.SetSelected(i++ == _bookmarkIndex);
+            {
+                if (i++ == _bookmarkIndex)
+                {
+                    row.SetSelected(true);
+                    _teleportBookmarksView?.ScrollTo(row);
+                }
+                else
+                    row.SetSelected(false);
+            }
         }
 
         /// <summary>
@@ -483,7 +492,7 @@ namespace DebugTools.Runtime.Controllers
             var vesselGUID = activeVessel.Guid.ToString();
 
             // Auto-save if required
-            if (_autoSaveOnTeleport?.value ?? false)
+            if (_autoSaveOnTeleport != null && _autoSaveOnTeleport.value)
                 Game.SaveLoadManager.ForceQuickSave();
 
             switch (bookmark.Type)

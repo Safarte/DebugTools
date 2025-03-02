@@ -37,6 +37,8 @@ namespace DebugTools
         /// </summary>
         public static void Initialize()
         {
+            if (!Application.isPlaying) return;
+            
             Configuration.Initialize(ReduxLib.ReduxLib.ReduxCoreConfig);
 
             var debugHandle = UITKHelper.LoadUxml("DebugWindow");
