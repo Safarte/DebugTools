@@ -96,7 +96,7 @@ namespace DebugTools.Runtime.Controllers.VesselTools
             _landed!.text = $"Landed: <b>{vessel.Landed}</b>";
             _splashed!.text = $"Landed: <b>{vessel.Splashed}</b>";
 
-            _altitudeRadius!.text = $"Radius: {vessel.AltitudeFromRadius.ToString(FP6Places)}</b>";
+            _altitudeRadius!.text = $"Radius: <b>{vessel.AltitudeFromRadius.ToString(FP6Places)}</b>";
             _altitudeTerrain!.text = $"Terrain: <b>{vessel.AltitudeFromTerrain.ToString(FP6Places)}</b>";
             _altitudeSeaLevel!.text = $"Sea Level: <b>{vessel.AltitudeFromSeaLevel.ToString(FP6Places)}</b>";
             _altitudeScenery!.text = $"Scenery: <b>{vessel.AltitudeFromScenery.ToString(FP6Places)}</b>";
