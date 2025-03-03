@@ -38,20 +38,13 @@ namespace DebugTools
         public static void Initialize()
         {
             if (!Application.isPlaying) return;
-            
+
             Configuration.Initialize(ReduxLib.ReduxLib.ReduxCoreConfig);
 
-            var debugHandle = UITKHelper.LoadUxml("DebugWindow");
-            debugHandle.Completed += handle =>
+            UITKHelper.LoadUxml("DebugWindow", uxml =>
             {
-                if (handle.Status != AsyncOperationStatus.Succeeded)
-                {
-                    Logger.LogError("Failed to load DebugWindow.uxml");
-                    return;
-                }
-
                 // Create main debug window
-                var debugWindow = UITKHelper.CreateWindowFromUxml(handle.Result, "DebugWindow");
+                var debugWindow = UITKHelper.CreateWindowFromUxml(uxml, "DebugWindow");
                 // Add a controller for the UI to the window's game object
                 DebugWindowController = debugWindow.gameObject.AddComponent<DebugWindowController>();
                 DebugWindowController.IsWindowOpen = false;
@@ -61,28 +54,23 @@ namespace DebugTools
                     evt => GameManager.Instance.Game.VFXTestSuiteDialog.IsVisible = evt.newValue);
                 DebugWindowController.RegisterToggle("FXDebugTools", "FX Debug Tools",
                     evt => GameManager.Instance.Game.FXDebugTools.IsVisible = evt.newValue);
-            };
+            });
         }
 
         private static void CreateDebugWindow<T>(string windowName, string toggleLabel) where T : BaseWindowController
         {
             // Load window UXML
-            var handle = UITKHelper.LoadUxml(windowName);
-            handle.Completed += handle1 =>
+            UITKHelper.LoadUxml(windowName, uxml =>
             {
-                if (handle1.Status != AsyncOperationStatus.Succeeded)
-                {
-                    Logger.LogError($"Failed to load {windowName}.uxml");
-                    return;
-                }
-
                 // Create UITK window
-                var window = UITKHelper.CreateWindowFromUxml(handle1.Result, windowName);
+                var window = UITKHelper.CreateWindowFromUxml(uxml, windowName);
 
                 // Attach window controller
                 var controller = window.gameObject.AddComponent<T>();
                 controller.IsWindowOpen = false;
 
+                if (DebugWindowController == null) return;
+                
                 // Setup window toggling & close button
                 DebugWindowController.RegisterToggle(windowName, toggleLabel,
                     evt => controller.IsWindowOpen = evt.newValue);
@@ -91,7 +79,7 @@ namespace DebugTools
                     controller.IsWindowOpen = false;
                     DebugWindowController.WindowToggles[windowName].value = false;
                 };
-            };
+            });
         }
 
         private static void CreateDebugWindows()

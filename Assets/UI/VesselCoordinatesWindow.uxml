@@ -1,0 +1,52 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/VesselCoordinatesWindow.uss?fileID=7433441132597879392&amp;guid=dacfacb2c23db1148ba02a8f469c3fd3&amp;type=3#VesselCoordinatesWindow" />
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Vessel Coordinates" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Coordinates ------------------------------------------------------------------------------------------" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
+        <ui:VisualElement name="coordinates" class="row">
+            <ui:Label tabindex="-1" text="Latitude: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="latitude" class="label-3" />
+            <ui:Label tabindex="-1" text="Longitude: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="longitude" class="label-3" />
+            <ui:Label tabindex="-1" text="Heading: &lt;b&gt;999.999999" display-tooltip-when-elided="true" name="heading" class="label-3" />
+            <ui:Label tabindex="-1" text="Zenith: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="zenith" class="label-3" />
+            <ui:Label tabindex="-1" text="Pitch: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="horizon-pitch" class="label-3" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Situation -----------------------------------------------------------------------------------------" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
+        <ui:VisualElement name="situation" class="row">
+            <ui:Label tabindex="-1" text="Body: &lt;b&gt;Kerbin" display-tooltip-when-elided="true" name="celestial-body" class="label-3" />
+            <ui:Label tabindex="-1" text="Origin: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="origin-distance" class="label-3" />
+            <ui:Label tabindex="-1" text="Situation: &lt;b&gt;Flying" display-tooltip-when-elided="true" name="situation" class="label-3" />
+            <ui:Label tabindex="-1" text="Landed: &lt;b&gt;false" display-tooltip-when-elided="true" name="landed" class="label-3" />
+            <ui:Label tabindex="-1" text="Splashed: &lt;b&gt;false" display-tooltip-when-elided="true" name="splashed" class="label-3" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Altitude ---------------------------------------------------------------------------------------" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
+        <ui:VisualElement name="altitude" class="row">
+            <ui:Label tabindex="-1" text="Radius: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="alt-radius" class="label-3" />
+            <ui:Label tabindex="-1" text="Terrain: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="alt-terrain" class="label-3" />
+            <ui:Label tabindex="-1" text="Sea Level: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="alt-sl" class="label-3" />
+            <ui:Label tabindex="-1" text="Scenery: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="alt-scenery" class="label-3" />
+            <ui:Label tabindex="-1" text="Surface: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="alt-surface" class="label-3" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Orbit ---------------------------------------------------------------------------------------" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
+        <ui:VisualElement name="orbit" class="row">
+            <ui:Label tabindex="-1" text="Semi Major Axis: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="semi-major-axis" style="overflow: hidden; text-overflow: ellipsis; width: 42%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Eccentricity: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="eccentricity" class="label-3" style="width: 45%;" />
+            <ui:Label tabindex="-1" text="Inclination: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="inclination" class="label-3" style="width: 42%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Long. Ascending Node: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="long-asc-node" class="label-3" style="width: 45%;" />
+            <ui:Label tabindex="-1" text="Arg. Periapsis: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="periapsis" class="label-3" style="width: 42%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Epoch: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="epoch" class="label-3" style="width: 28%;" />
+            <ui:Label tabindex="-1" text="Mean Anomaly at Epoch: &lt;b&gt;99.999999" display-tooltip-when-elided="true" name="epoch-anomaly" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="Hand of Kraken ---------------------------------------------------------------------------------------" display-tooltip-when-elided="true" style="overflow: hidden; -unity-font-style: normal; color: rgb(154, 158, 167);" />
+        <ui:VisualElement name="hand-of-kraken" class="row" style="justify-content: flex-start;">
+            <ui:Toggle label="Hand of Kraken Enabled" name="toggle-hok" class="toggle" style="width: 42%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Physics Mode: &lt;b&gt;RigidBody" display-tooltip-when-elided="true" name="hok-phys-mode" style="width: 35%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Correcting Orbit: &lt;b&gt;false&lt;/b&gt;" display-tooltip-when-elided="true" name="hok-correcting" style="width: 42%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Got Expected Orbit: &lt;b&gt;false" display-tooltip-when-elided="true" name="hok-got-pos" style="width: 40%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Under Acceleration: &lt;b&gt;false" display-tooltip-when-elided="true" name="hok-under-accel" style="width: 42%; margin-right: 3%;" />
+            <ui:Label tabindex="-1" text="Orbit Standoff: &lt;b&gt;false" display-tooltip-when-elided="true" name="hok-orbit-standoff" style="width: 50%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

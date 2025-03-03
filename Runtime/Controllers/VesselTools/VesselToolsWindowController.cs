@@ -4,14 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using DebugTools.Utils;
 using KSP.Game;
-using KSP.Logging;
 using KSP.Messages;
 using KSP.Modules;
 using KSP.Sim;
 using KSP.Sim.impl;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UIElements;
 
 namespace DebugTools.Runtime.Controllers.VesselTools
@@ -38,6 +35,10 @@ namespace DebugTools.Runtime.Controllers.VesselTools
         private Toggle? _maneuversToggle;
         private ManeuverNodesWindowController? _maneuvers;
         private float _maneuversLastUpdated = -1f;
+
+        private Toggle? _coordsToggle;
+        private VesselCoordinatesWindowController? _coords;
+        private float _coordsLastUpdated = -1f;
 
         // Flight axes
         private Toggle? _showControlPoints;
@@ -149,9 +150,10 @@ namespace DebugTools.Runtime.Controllers.VesselTools
             LoadPrefabs();
 
             // Stats windows
+            InitThermalData();
             InitMassStats();
             InitManeuvers();
-            InitThermalData();
+            InitCoords();
 
             // Flight axes
             _showControlPoints = RootElement.Q<Toggle>("show-control-points");
@@ -215,45 +217,20 @@ namespace DebugTools.Runtime.Controllers.VesselTools
 
         private void LoadPrefabs()
         {
-            var arrowHandle = Addressables.LoadAssetAsync<GameObject>(PrefabPath + "DebugArrow.prefab");
-            arrowHandle.Completed += res =>
-            {
-                if (res.Status != AsyncOperationStatus.Succeeded)
-                {
-                    DebugToolsPlugin.Logger.LogError("Failed to load DebugArrow.prefab");
-                    return;
-                }
+            GameManager.Instance.Assets.Load<GameObject>(PrefabPath + "DebugArrow.prefab",
+                obj => { _debugArrowPrefab = obj.GetComponent<DebugShapesArrowComponent>(); });
 
-                _debugArrowPrefab = res.Result.GetComponent<DebugShapesArrowComponent>();
-            };
-
-            var axesHandle = Addressables.LoadAssetAsync<GameObject>(PrefabPath + "DebugAxes.prefab");
-            axesHandle.Completed += res =>
-            {
-                if (res.Status != AsyncOperationStatus.Succeeded)
-                {
-                    DebugToolsPlugin.Logger.LogError("Failed to load DebugAxes.prefab");
-                    return;
-                }
-
-                _debugAxesPrefab = res.Result.GetComponent<DebugShapesAxesComponent>();
-            };
+            GameManager.Instance.Assets.Load<GameObject>(PrefabPath + "DebugAxes.prefab",
+                obj => { _debugAxesPrefab = obj.GetComponent<DebugShapesAxesComponent>(); });
         }
 
         private void InitThermalData()
         {
             _thermalDataToggle = RootElement.Q<Toggle>("thermal-data-toggle");
 
-            var handle = UITKHelper.LoadUxml("ThermalDataWindow");
-            handle.Completed += resHandle =>
+            UITKHelper.LoadUxml("ThermalDataWindow", uxml =>
             {
-                if (resHandle.Status != AsyncOperationStatus.Succeeded)
-                {
-                    DebugToolsPlugin.Logger.LogError("Failed to load ThermalDataWindow.uxml");
-                    return;
-                }
-
-                var window = UITKHelper.CreateWindowFromUxml(resHandle.Result, "ThermalDataWindow");
+                var window = UITKHelper.CreateWindowFromUxml(uxml, "ThermalDataWindow");
                 _thermalData = window.gameObject.AddComponent<ThermalDataWindowController>();
                 _thermalData.IsWindowOpen = false;
 
@@ -264,23 +241,16 @@ namespace DebugTools.Runtime.Controllers.VesselTools
                     _thermalData.IsWindowOpen = false;
                     _thermalDataToggle!.value = false;
                 };
-            };
+            });
         }
 
         private void InitMassStats()
         {
             _massStatsToggle = RootElement.Q<Toggle>("mass-stats-toggle");
 
-            var handle = UITKHelper.LoadUxml("MassStatsWindow");
-            handle.Completed += resHandle =>
+            UITKHelper.LoadUxml("MassStatsWindow", uxml =>
             {
-                if (resHandle.Status != AsyncOperationStatus.Succeeded)
-                {
-                    DebugToolsPlugin.Logger.LogError("Failed to load MassStatsWindow.uxml");
-                    return;
-                }
-
-                var window = UITKHelper.CreateWindowFromUxml(resHandle.Result, "MassStatsWindow");
+                var window = UITKHelper.CreateWindowFromUxml(uxml, "MassStatsWindow");
                 _massStats = window.gameObject.AddComponent<MassStatsWindowController>();
                 _massStats.IsWindowOpen = false;
 
@@ -291,23 +261,16 @@ namespace DebugTools.Runtime.Controllers.VesselTools
                     _massStats.IsWindowOpen = false;
                     _massStatsToggle!.value = false;
                 };
-            };
+            });
         }
 
         private void InitManeuvers()
         {
             _maneuversToggle = RootElement.Q<Toggle>("maneuvers-toggle");
 
-            var handle = UITKHelper.LoadUxml("ManeuversWindow");
-            handle.Completed += resHandle =>
+            UITKHelper.LoadUxml("ManeuversWindow", uxml =>
             {
-                if (resHandle.Status != AsyncOperationStatus.Succeeded)
-                {
-                    DebugToolsPlugin.Logger.LogError("Failed to load ManeuversWindow.uxml");
-                    return;
-                }
-
-                var window = UITKHelper.CreateWindowFromUxml(resHandle.Result, "ManeuversWindow");
+                var window = UITKHelper.CreateWindowFromUxml(uxml, "ManeuversWindow");
                 _maneuvers = window.gameObject.AddComponent<ManeuverNodesWindowController>();
                 _maneuvers.IsWindowOpen = false;
 
@@ -318,16 +281,38 @@ namespace DebugTools.Runtime.Controllers.VesselTools
                     _maneuvers.IsWindowOpen = false;
                     _maneuversToggle!.value = false;
                 };
-            };
+            });
+        }
+
+        private void InitCoords()
+        {
+            _coordsToggle = RootElement.Q<Toggle>("coords-toggle");
+
+            UITKHelper.LoadUxml("VesselCoordinatesWindow", uxml =>
+            {
+                var window = UITKHelper.CreateWindowFromUxml(uxml, "VesselCoordinatesWindow");
+                _coords = window.gameObject.AddComponent<VesselCoordinatesWindowController>();
+                _coords.IsWindowOpen = false;
+
+                _coordsToggle!.RegisterValueChangedCallback(evt => _coords.IsWindowOpen = evt.newValue);
+
+                _coords.CloseButton.clicked += () =>
+                {
+                    _coords.IsWindowOpen = false;
+                    _coordsToggle!.value = false;
+                };
+            });
         }
 
         private void LateUpdate()
         {
-            if (!IsWindowOpen) return;
-
             UpdateThermalData();
             UpdateMassStats();
             UpdateManeuvers();
+            UpdateCoords();
+            
+            if (!IsWindowOpen) return;
+            
             UpdateJointVisualizations();
             UpdateVesselsCoM();
 
@@ -424,6 +409,24 @@ namespace DebugTools.Runtime.Controllers.VesselTools
             if (activeVessel == null) return;
 
             _maneuvers.SyncTo(activeVessel);
+        }
+
+        private void UpdateCoords()
+        {
+            if (_coords == null || !_coords.IsWindowOpen || _view == null) return;
+
+            // Update maneuvers every second
+            _coordsLastUpdated -= Time.unscaledDeltaTime;
+            if (_coordsLastUpdated >= 0f) return;
+            _coordsLastUpdated = 0.5f;
+
+            var activeVessel = _view.GetActiveSimVessel();
+            var activeBehavior = _view.GetBehaviorIfLoaded(activeVessel);
+
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
+            if (activeVessel == null || activeBehavior == null) return;
+
+            _coords.SyncTo(activeVessel, activeBehavior);
         }
 
         private void OnShowControlPointsChanged(ChangeEvent<bool> evt)
@@ -978,8 +981,8 @@ namespace DebugTools.Runtime.Controllers.VesselTools
 
             if (_vessels.Count != _comMarkers.Count)
                 CreateCoMMarkers();
-            
-            
+
+
             var i = 0;
             foreach (var vessel in _vessels)
             {
@@ -988,7 +991,7 @@ namespace DebugTools.Runtime.Controllers.VesselTools
                 _comMarkers[i].SetRadius(_markerSize.value);
                 ++i;
             }
-        } 
+        }
 
         private void OnShowPhysicsForceChanged(ChangeEvent<bool> evt)
         {

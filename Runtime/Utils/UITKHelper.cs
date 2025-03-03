@@ -1,19 +1,19 @@
-
-
+using System;
+using KSP.Game;
 using UitkForKsp2.API;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using Object = UnityEngine.Object;
 
 // ReSharper disable once CheckNamespace
 namespace DebugTools.Utils
 {
     public static class UITKHelper
     {
-        public static AsyncOperationHandle<VisualTreeAsset> LoadUxml(string name)
+        public static void LoadUxml(string name, Action<VisualTreeAsset> callback)
         {
-            return Addressables.LoadAssetAsync<VisualTreeAsset>($"Assets/Modules/DebugTools/Assets/UI/{name}.uxml");
+            GameManager.Instance.Assets.Load($"Assets/Modules/DebugTools/Assets/UI/{name}.uxml", callback);
         }
 
         public static UIDocument CreateWindowFromUxml(VisualTreeAsset uxml, string name)

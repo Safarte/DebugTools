@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KSP.Game;
 using KSP.Rendering;
 using KSP.Rendering.Planets;
 using KSP.Sim;
@@ -18,6 +19,8 @@ namespace DebugTools.Runtime.Controllers
 {
     public class TerrainDebugWindowController : BaseWindowController
     {
+        private const string PhysXBubbleMaterialAddress = "Assets/Modules/DebugTools/Assets/UI/PhysXBubbleMat.mat";
+
         private Toggle _enableMeshBucketing;
         private Toggle _showBiomeColors;
         private Toggle _boostTriplanarContrast;
@@ -88,14 +91,8 @@ namespace DebugTools.Runtime.Controllers
             _selectQuad.clicked += () => { _selectQuadForDebugging = true; };
             _debugQuadStatus = RootElement.Q<Label>("debug-quad-status");
 
-            var handle =
-                Addressables.LoadAssetAsync<Material>("Assets/Modules/DebugTools/Assets/UI/PhysXBubbleMat.mat");
-            handle.Completed += handle1 =>
-            {
-                if (handle1.Status != AsyncOperationStatus.Succeeded)
-                    DebugToolsPlugin.Logger.LogError("Failed to load PhysXBubbleMat.mat");
-                _physxBubbleMaterial = handle1.Result;
-            };
+            GameManager.Instance.Assets.Load<Material>(PhysXBubbleMaterialAddress,
+                mat => { _physxBubbleMaterial = mat; });
 
             EnsureFlightCamera();
         }
