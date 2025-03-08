@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using KSP.Game;
+﻿using KSP.Game;
 using KSP.Game.Science;
 using KSP.Messages;
 using KSP.Sim.impl;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,6 +13,7 @@ namespace DebugTools.Runtime.Controllers
     public class VesselScienceWindowController : BaseWindowController
     {
         private const string PhysXBubbleMaterialAddress = "Assets/Modules/DebugTools/Assets/UI/PhysXBubbleMat.mat";
+        private const string PqsOverlayPrefabAddress = "Assets/Modules/DebugTools/Assets/PqsOverlayPrefab.prefab";
         private const string OverflowTextClassName = "overflow-text";
 
         private DropdownField? _vessel;
@@ -49,6 +50,11 @@ namespace DebugTools.Runtime.Controllers
             Game.Messages.Subscribe<GameLoadFinishedMessage>(OnGameLoaded);
 
             GameManager.Instance.Assets.Load<Material>(PhysXBubbleMaterialAddress, mat => _regionBoundsMaterial = mat);
+            GameManager.Instance.Assets.Load<PQSScienceOverlay>(PqsOverlayPrefabAddress, overlay =>
+            {
+                _scienceOverlay = Instantiate(overlay, transform, false);
+                _scienceOverlay.enabled = false;
+            });
         }
 
         private void OnDestroy()
@@ -77,13 +83,13 @@ namespace DebugTools.Runtime.Controllers
 
             _createReport = RootElement.Q<Button>("create-report");
             _createReport.clicked += CreateTestReport;
-            
+
             _submitReport = RootElement.Q<Button>("submit-report");
             _submitReport.clicked += SubmitReport;
-            
+
             _transmitReport = RootElement.Q<Button>("transmit-report");
             _transmitReport.clicked += TransmitReport;
-            
+
             _deleteReport = RootElement.Q<Button>("delete-reports");
             _deleteReport.clicked += DeleteReports;
 
@@ -94,7 +100,7 @@ namespace DebugTools.Runtime.Controllers
         private void OnGameLoaded(MessageCenterMessage msg)
         {
             _allVessels.AddRange(Game.UniverseModel.GetAllVessels());
-            _scienceOverlay = Window.gameObject.AddComponent<PQSScienceOverlay>();
+
             UpdateVesselDropdown();
             UpdateScienceMetadata();
         }
@@ -332,23 +338,23 @@ namespace DebugTools.Runtime.Controllers
         private void SubmitReport()
         {
             if (Game?.ScienceManager == null) return;
-            
+
             var report = default(CompletedResearchReport);
             report.ExperimentID = IGGuid.NewGuid().ToString();
             report.ResearchLocationID = "Test";
             report.ResearchReportType = ScienceReportType.DataType;
             report.FinalScienceValue = 1000f;
-            
+
             Game.ScienceManager.TrySubmitCompletedResearchReport(report);
         }
 
         private void TransmitReport()
         {
             if (_storageComponent == null || _storageComponent.GetNumberOfStoredResearchReports() <= 0) return;
-            
+
             var storedReports = _storageComponent.GetStoredResearchReports();
             if (storedReports.Count <= 0) return;
-                
+
             var report = storedReports[0];
             _storageComponent.StartReportTransmission(report.ResearchReportKey);
         }
@@ -356,7 +362,7 @@ namespace DebugTools.Runtime.Controllers
         private void DeleteReports()
         {
             if (_experimentIDs.Count <= 0 || _storageComponent == null) return;
-            
+
             var storedReports = _storageComponent.GetStoredResearchReports();
             foreach (var report in storedReports)
                 _storageComponent.RemoveResearchReport(report.ResearchReportKey);

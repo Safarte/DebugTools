@@ -1,7 +1,7 @@
 ﻿#ifndef _QUADMESHDATA
 #define _QUADMESHDATA
 
-#pragma shader_feature_local _USE_PQS_BUFFER
+#pragma multi_compile_local _USE_PQS_BUFFER
 
 struct QuadMeshData
 {
