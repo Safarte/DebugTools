@@ -33,7 +33,9 @@ namespace DebugTools.Utils
 
             // Create the window
             Object.Instantiate(uxml);
-            return Window.Create(windowOptions, uxml);
+            UIDocument window = Window.Create(windowOptions, uxml);
+            window.panelSettings.sortingOrder = 9999;
+            return window;
         }
     }
 }

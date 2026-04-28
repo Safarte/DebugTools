@@ -99,6 +99,8 @@ namespace DebugTools
             CreateDebugWindow<TeleportBookmarksWindowController>("TeleportBookmarksWindow", "Teleport Bookmarks");
             // Resource scanning window
             CreateDebugWindow<ResourceScanDebugWindowController>("ResourceScanDebugWindow", "Resource Scanning");
+            // Missions debug window
+            CreateDebugWindow<MissionsDebugWindowController>("MissionsDebugWindow", "Missions");
         }
     }
 }

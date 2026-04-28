@@ -1,0 +1,50 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Modules/DebugTools/Assets/UI/MissionsDebugWindow.uss?fileID=7433441132597879392#MissionsDebugWindow" />
+    <ui:VisualElement name="root" class="root" style="max-height: 700px;">
+        <ui:VisualElement name="title-bar">
+            <ui:Label text="Missions" />
+            <ui:Button text="×" name="close-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content">
+            <ui:VisualElement name="filter-bar" class="field" style="flex-direction: row; justify-content: space-between; align-items: center; height: 35px;">
+                <ui:DropdownField label="Filter" index="0" name="type-filter" style="width: 45%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+                <ui:TextField picking-mode="Ignore" label="Search" value="" name="search" style="width: 40%; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                <ui:Button text="Refresh" display-tooltip-when-elided="true" name="refresh" style="height: 30px; width: 12%;" />
+            </ui:VisualElement>
+
+            <ui:Label tabindex="-1" text="Missions =============================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(154, 158, 167);" />
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="missions-list" style="width: 100%; height: auto; max-height: 220px; background-color: rgba(34, 38, 46, 0.5); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+                <DebugTools.Runtime.UI.MissionRow />
+                <DebugTools.Runtime.UI.MissionRow IsHeader="false" class="mission-row__selected" />
+                <DebugTools.Runtime.UI.MissionRow IsHeader="false" />
+            </ui:ScrollView>
+
+            <ui:Label tabindex="-1" text="Selected Mission =========================================================" display-tooltip-when-elided="true" style="overflow: hidden; color: rgb(154, 158, 167); margin-top: 6px;" />
+            <ui:VisualElement name="details" style="flex-direction: column; background-color: rgba(34, 38, 46, 0.5); padding-left: 6px; padding-right: 6px; padding-top: 4px; padding-bottom: 4px;">
+                <ui:Label tabindex="-1" text="ID: -" name="header-id" style="white-space: normal;" />
+                <ui:Label tabindex="-1" text="Name: -" name="header-name" style="white-space: normal;" />
+                <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                    <ui:Label tabindex="-1" text="Type: -" name="header-type" style="width: 32%;" />
+                    <ui:Label tabindex="-1" text="Owner: -" name="header-owner" style="width: 32%;" />
+                    <ui:Label tabindex="-1" text="State: -" name="header-state" style="width: 32%;" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="mission-actions" style="flex-direction: row; flex-wrap: wrap; justify-content: space-between; margin-top: 6px;">
+                    <ui:Button text="Activate" name="btn-activate" style="width: 16%; height: 28px;" />
+                    <ui:Button text="Deactivate" name="btn-deactivate" style="width: 16%; height: 28px;" />
+                    <ui:Button text="Complete" name="btn-complete" style="width: 16%; height: 28px;" />
+                    <ui:Button text="Fail" name="btn-fail" style="width: 16%; height: 28px;" />
+                    <ui:Button text="Reset" name="btn-reset" style="width: 16%; height: 28px;" />
+                    <ui:Button text="Remove" name="btn-remove" style="width: 16%; height: 28px;" />
+                </ui:VisualElement>
+
+                <ui:Foldout text="Raw Status Dump" name="status-dump" value="false" style="margin-top: 6px;">
+                    <ui:TextField picking-mode="Ignore" value="" name="status-text" multiline="true" readonly="true" style="min-height: 120px; white-space: normal;" />
+                </ui:Foldout>
+
+                <ui:Label tabindex="-1" text="Stages" display-tooltip-when-elided="true" style="margin-top: 6px; color: rgb(154, 158, 167);" />
+                <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="stages-list" style="width: 100%; height: auto; max-height: 200px; background-color: rgba(34, 38, 46, 0.5); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

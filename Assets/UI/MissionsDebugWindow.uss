@@ -1,0 +1,231 @@
+.root {
+    width: 720px;
+    max-height: 700px;
+    background-color: rgba(34, 38, 46, 0.95);
+}
+
+#title-bar {
+    justify-content: space-between;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+#close-button {
+    margin-left: 0;
+    margin-right: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 9px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+#close-button:hover {
+    color: rgb(194, 41, 25);
+    border-left-color: rgb(194, 41, 25);
+    border-right-color: rgb(194, 41, 25);
+    border-top-color: rgb(194, 41, 25);
+    border-bottom-color: rgb(194, 41, 25);
+}
+
+.field {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10px;
+    margin-bottom: 6px;
+}
+
+.unity-base-field__label {
+    min-width: 60px;
+}
+
+.unity-base-popup-field {
+    margin: 0;
+    margin-top: 5px;
+}
+
+.unity-base-popup-field__label {
+    -unity-text-align: middle-left;
+    min-width: 60px;
+}
+
+.unity-base-popup-field__text {
+    color: rgb(192, 199, 213);
+}
+
+.unity-base-popup-field__input:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.unity-base-popup-field__label:hover {
+    -unity-text-align: middle-left;
+    min-width: 60px;
+}
+
+.mission-row {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+
+.mission-row__id {
+    width: 22%;
+    -unity-text-align: middle-left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mission-row__name {
+    width: 22%;
+    -unity-text-align: middle-left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mission-row__type {
+    width: 11%;
+    -unity-text-align: middle-left;
+}
+
+.mission-row__owner {
+    width: 10%;
+    -unity-text-align: middle-left;
+}
+
+.mission-row__state {
+    width: 12%;
+    -unity-text-align: middle-left;
+    -unity-font-style: bold;
+}
+
+.mission-row__stage-info {
+    width: 8%;
+    -unity-text-align: middle-left;
+}
+
+.mission-row__select-button {
+    width: 12%;
+}
+
+.mission-row__selected {
+    background-color: rgba(192, 199, 213, 0.25);
+    border-left-color: rgb(192, 199, 213);
+    border-right-color: rgb(192, 199, 213);
+    border-top-color: rgb(192, 199, 213);
+    border-bottom-color: rgb(192, 199, 213);
+}
+
+.mission-row__header {
+    color: rgb(154, 158, 167);
+}
+
+.mission-row__state--active .mission-row__state {
+    color: rgb(90, 180, 120);
+}
+
+.mission-row__state--complete .mission-row__state {
+    color: rgb(120, 160, 220);
+}
+
+.mission-row__state--failed .mission-row__state {
+    color: rgb(194, 41, 25);
+}
+
+.mission-row__state--inactive .mission-row__state {
+    color: rgb(154, 158, 167);
+}
+
+.stage-row {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.stage-row__index {
+    width: 6%;
+    -unity-text-align: middle-left;
+    color: rgb(154, 158, 167);
+}
+
+.stage-row__name {
+    width: 18%;
+    -unity-text-align: middle-left;
+    -unity-font-style: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stage-row__objective {
+    width: 32%;
+    -unity-text-align: middle-left;
+    color: rgb(192, 199, 213);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stage-row__status {
+    width: 14%;
+    -unity-text-align: middle-left;
+    -unity-font-style: bold;
+}
+
+.stage-row__activate {
+    width: 13%;
+}
+
+.stage-row__complete {
+    width: 13%;
+}
+
+.stage-row__current {
+    background-color: rgba(90, 180, 120, 0.15);
+    border-left-color: rgb(90, 180, 120);
+    border-right-color: rgb(90, 180, 120);
+    border-top-color: rgb(90, 180, 120);
+    border-bottom-color: rgb(90, 180, 120);
+}
+
+.stage-row__completed .stage-row__status {
+    color: rgb(120, 160, 220);
+}
+
+.stage-row__active .stage-row__status {
+    color: rgb(90, 180, 120);
+}
+
+.stage-row__inactive .stage-row__status {
+    color: rgb(154, 158, 167);
+}
