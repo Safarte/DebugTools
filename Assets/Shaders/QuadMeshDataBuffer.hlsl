@@ -1,8 +1,6 @@
 ﻿#ifndef _QUADMESHDATA
 #define _QUADMESHDATA
 
-#pragma multi_compile_local _USE_PQS_BUFFER
-
 struct QuadMeshData
 {
     float3 position;
@@ -22,7 +20,7 @@ struct appdata
 };
 
 #if _USE_PQS_BUFFER
-Buffer<uint> VisibleQuadMeshIndices;
+StructuredBuffer<uint> VisibleQuadMeshIndices;
 StructuredBuffer<QuadMeshData> QuadMeshDataBuffer;
 #endif
 

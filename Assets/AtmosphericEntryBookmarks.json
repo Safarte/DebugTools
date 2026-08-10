@@ -1,0 +1,212 @@
+[
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Kerbin Low Orbit Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Kerbin",
+      "inclination": 0.0,
+      "eccentricity": 0.07462686567164178,
+      "semiMajorAxis": 670000.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": 4.36926878648072,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Kerbin Interplanetary Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Kerbin",
+      "inclination": 0.0,
+      "eccentricity": 1.3950050968399583,
+      "semiMajorAxis": -1569600.0000000037,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -0.10335823505470454,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Duna Low Orbit Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Duna",
+      "inclination": 0.0,
+      "eccentricity": 0.10810810810810811,
+      "semiMajorAxis": 370000.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -2.0007707344164998,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Duna Interplanetary Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Duna",
+      "inclination": 0.0,
+      "eccentricity": 2.0950241664774536,
+      "semiMajorAxis": -301363.2119750981,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -0.5022200631786002,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Eve Low Orbit Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Eve",
+      "inclination": 0.0,
+      "eccentricity": 0.07006369426751585,
+      "semiMajorAxis": 785000.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": 4.302934525086788,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Eve Interplanetary Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Eve",
+      "inclination": 0.0,
+      "eccentricity": 1.558327290797091,
+      "semiMajorAxis": -1307476.8366737398,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -0.16163434722945197,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Laythe Low Orbit Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Laythe",
+      "inclination": 0.0,
+      "eccentricity": 0.06787330316742081,
+      "semiMajorAxis": 552500.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": 4.28690026605933,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Laythe Interplanetary Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Laythe",
+      "inclination": 0.0,
+      "eccentricity": 1.8504587029235084,
+      "semiMajorAxis": -605555.5645790363,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -0.27479921565053084,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Jool Low Orbit Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Jool",
+      "inclination": 0.0,
+      "eccentricity": 0.017059301380991064,
+      "semiMajorAxis": 6155000.0,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -2.224928190193952,
+      "epoch": 0.0
+    }
+  },
+  {
+    "Type": "Orbit",
+    "BookmarkName": "Jool Interplanetary Entry",
+    "State": {
+      "ReferenceBodyGuid": null,
+      "Altitude": 0.0,
+      "Latitude": 0.0,
+      "Longitude": 0.0,
+      "VerticalSpeed": 0.0
+    },
+    "OrbitState": {
+      "referenceBodyGuid": "Jool",
+      "inclination": 0.0,
+      "eccentricity": 1.5353451613510853,
+      "semiMajorAxis": -11301120.168399807,
+      "longitudeOfAscendingNode": 0.0,
+      "argumentOfPeriapsis": 0.0,
+      "meanAnomalyAtEpoch": -0.07557912193533675,
+      "epoch": 0.0
+    }
+  }
+]

@@ -21,6 +21,8 @@
             #include "UnityCG.cginc"
             #include "QuadMeshDataBuffer.hlsl"
 
+            #pragma multi_compile_local __ _USE_PQS_BUFFER
+
             struct v2f
             {
                 float2 uv : TEXCOORD0;
